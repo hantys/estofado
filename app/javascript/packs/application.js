@@ -15,7 +15,7 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-import '../src/js/main';
-import '../src/style/style.scss';
+import '../src/js';
+import '../src/style';
 
 console.log('Hello World from Webpacker')
