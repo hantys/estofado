@@ -90,14 +90,7 @@ Performance/RedundantMerge:
 # SupportedStyles: nested, compact
 Style/ClassAndModuleChildren:
   Exclude:
-    - 'app/models/core/aggregation.rb'
-    - 'app/models/core/attribution.rb'
-    - 'app/models/core/company.rb'
-    - 'app/models/core/group.rb'
-    - 'app/models/core/join.rb'
-    - 'app/models/core/permission.rb'
-    - 'app/models/core/role.rb'
-    - 'app/models/core/user.rb'
+    - 'app/**/*.rb'
 
 # Offense count: 8
 # Style/Documentation:
@@ -146,16 +139,6 @@ Style/StringLiterals:
 # URISchemes: http, https
 Metrics/LineLength:
   Max: 230
-
-Metrics/CyclomaticComplexity:
-  Max: 8
-  Exclude:
-    - 'app/models/ability.rb'
-
-Metrics/PerceivedComplexity:
-  Max: 8
-  Exclude:
-    - 'app/models/ability.rb'
 
 Style/AsciiComments:
   Enabled: false

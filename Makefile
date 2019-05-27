@@ -1,6 +1,9 @@
 ARG=
 run:
-	foreman start
+	rails s -b 0.0.0.0
+
+webpack:
+	./bin/webpack-dev-server
 
 install:
 	bundle install

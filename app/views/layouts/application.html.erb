@@ -1,15 +1,44 @@
 <!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="pt-BR">
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
     <title>Estofado</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application' %>
+    <%= stylesheet_pack_tag 'application' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="bg-light">
+    <%= render 'layouts/navbar' %>
+    <main role="main" class="container-fluid">
+      <% flash.each do |name, msg| %>
+        <% aux = 'alert-primary' %>
+        <% case name
+          when 'notice'
+            aux = 'alert-primary'
+          when 'success'
+            aux = 'alert-success'
+          when 'error'
+            aux = 'alert-danger'
+          when 'alert'
+            aux = 'alert-warning'
+          end
+        %>
+        <%= content_tag(:div, msg, class: "alert #{aux} text-center") %>
+      <% end %>
+      <div class="my-3 p-3 bg-white rounded box-shadow ">
+        <%= yield %>
+      </div>
+    </main>
+
+    <%= javascript_pack_tag 'application' %>
+    <%= javascript_include_tag 'application' %>
   </body>
 </html>
