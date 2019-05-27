@@ -30,7 +30,27 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+gem 'mini_magick', '~> 4.8'
+
+gem 'devise'
+gem 'pry-rails'
+gem 'pry'
+
+gem 'enum_help'
+
+gem 'simple_form'
+gem 'nested_form'
+gem 'ransack'
+
+gem 'paper_trail' # https://github.com/paper-trail-gem/paper_trail
+gem 'paper_trail-association_tracking'
+
+gem 'carrierwave'
+
+# https://github.com/rubysherpas/paranoia
+gem 'paranoia', '~> 2.2'
+
+gem 'kaminari'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -41,6 +61,39 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  # Implements rubocop command for Spring. https://github.com/toptal/spring-commands-rubocop
+  gem 'spring-commands-rubocop'
+
+  # RuboCop is a Ruby static code analyzer and code formatter. Out of the box it will enforce many of the guidelines outlined in the community Ruby Style Guide. https://github.com/rubocop-hq/rubocop
+  gem 'rubocop', '~> 0.63.1', require: false
+
+  # RSpec-specific analysis for your projects, as an extension to RuboCop.
+  # Read more: https://github.com/rubocop-hq/rubocop-rspec
+  gem 'rubocop-rspec'
+
+  # IDE tools for the Ruby language.
+  # Read more: https://github.com/castwide/solargraph
+  gem 'solargraph', '0.31.2'
+
+  # rspec-rails brings the RSpec testing framework to Ruby on Rails as a drop-in alternative to its default testing framework, Minitest.
+  # Read more: https://github.com/rspec/rspec-rails
+  gem 'rspec-rails', '~> 3.8'
+
+  # RSpec 2 & 3 results that your CI can read. Jenkins, Buildkite, CircleCI, and probably more, too.
+  # Read more: https://github.com/sj26/rspec_junit_formatter
+  gem 'rspec_junit_formatter'
+
+  # Shoulda Matchers provides RSpec- and Minitest-compatible one-liners that test common Rails functionality:
+  # Read more: https://matchers.shoulda.io, https://github.com/thoughtbot/shoulda-matchers
+  gem 'shoulda'
+  gem 'shoulda-matchers'
+
+  # factory_bot is a fixtures replacement with a straightforward definition syntax, support for multiple build strategies: https://github.com/thoughtbot/factory_bot_rails
+  gem 'factory_bot_rails'
+
+  # This gem is a port of Perl's Data::Faker library that generates fake data.: https://github.com/stympy/faker
+  gem 'faker'
 end
 
 group :development do
@@ -50,6 +103,22 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  # Really fast deployer and server automation tool.
+  # Read more: https://github.com/mina-deploy/mina
+  gem 'mina'
+
+  # Mina tasks for handle with Puma.
+  # Read more: https://github.com/sandelius/mina-puma
+  gem 'mina-puma'
+
+  # mina-sidekiq is a gem that adds tasks to aid in the deployment of Sidekiq using Mina.
+  # Read more: https://github.com/Mic92/mina-sidekiq
+  gem 'mina-sidekiq'
+
+  # This gem implements the rspec command for Spring.
+  gem 'spring-commands-rspec'
+
 end
 
 group :test do
@@ -58,7 +127,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
-end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+  # Database Cleaner is a set of strategies for cleaning your database in Ruby. :https://github.com/DatabaseCleaner/database_cleaner
+  gem 'database_cleaner'
+end
