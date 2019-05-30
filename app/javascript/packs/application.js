@@ -16,6 +16,19 @@
 // const imagePath = (name) => images(name, true)
 
 import '../src/js';
-import '../src/style';
 
-console.log('Hello World from Webpacker')
+let cache = {};
+
+
+const importAll = r => {
+  r.keys().forEach(key => (cache[key] = r(key)));
+};
+
+// Load images and cache it
+importAll(
+  require.context(
+    "../image",
+    true,
+    /\.(png|jpg|gif|svg)(\?v=[0-9]\.[0.9]\.[0.9])?$/
+  )
+);

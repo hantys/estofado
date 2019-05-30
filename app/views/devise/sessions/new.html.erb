@@ -1,0 +1,26 @@
+<%= form_for resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-signin' } do |f| %>
+
+  <div class="text-center mb-4">
+    <%#= image_tag 'Logo2.png', alt: "logo", width: "100", height: "100" %>
+    <h1 class="h3 mb-3 font-weight-normal">Entre com login e senha</h1>
+  </div>
+  <div class="form-label-group">
+    <%= f.text_field :login, required: true, autofocus: true, id: "inputLogin", class: "form-control", placeholder: "Login" %>
+    <label for="inputLogin">Login</label>
+  </div>
+
+  <div class="form-label-group">
+    <%= f.password_field  :password, required: true, autofocus: false, id: "inputPassword", class: "form-control", placeholder: "Senha" %>
+    <label for="inputPassword">Senha</label>
+  </div>
+
+  <div class="checkbox mb-3">
+    <label>
+      <input type="checkbox" name="user[remember_me]" value="remember-me"> Continuar logado
+    </label>
+  </div>
+
+  <%= f.submit "Entrar",class:"btn btn-lg btn-primary btn-block" %>
+  <%= render "devise/shared/links" %>
+  <p class="mt-5 mb-3 text-muted text-center">&copy; 2018</p>
+<% end %>
