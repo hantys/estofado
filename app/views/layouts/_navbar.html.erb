@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md fixed-top navbar-dark" style="background-color: indigo;">
+<nav class="navbar navbar-expand-md fixed-top navbar-dark">
   <%= link_to 'Carioca Poltronas', root_path, class: 'navbar-brand' %>
   <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
     <span class="navbar-toggler-icon"></span>
@@ -51,7 +51,7 @@
 
     <ul class="nav navbar-nav navbar-right">
       <li role="presentation" class="">
-        <%= link_to('Sair', destroy_user_session_path, class: 'btn btn-1 btn-danger', method: :delete) %>
+        <%= link_to('Sair', destroy_user_session_path, class: 'btn btn-link text-white', method: :delete) %>
       </li>
     </ul>
   </div>

@@ -34,7 +34,7 @@ teste:
 	bin/rspec $(ARG);
 
 reset:
-	bundle install; rails db:drop:all db:create:all db:migrate
+	bundle install; rails db:drop; rails db:create:all; rails db:migrate
 
 rollback:
 	rails db:rollback

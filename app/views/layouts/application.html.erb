@@ -21,7 +21,7 @@
   <body class="bg-light">
     <%= render 'layouts/navbar' %>
     <main role="main" class="container-fluid">
-      <div class="my-3 p-3 bg-white rounded box-shadow ">
+      <div class="my-3 p-3  rounded box-shadow ">
         <% flash.each do |name, msg| %>
           <% aux = 'alert-primary' %>
           <% case name
@@ -35,7 +35,7 @@
               aux = 'alert-warning'
             end
           %>
-          <div class="alert <%= aux %> text-center alert-dismissible fade show" role="alert">
+          <div id="alert" class="alert <%= aux %> text-center alert-dismissible fade show" role="alert">
             <span class="alert-inner--icon"><i class="ni ni-like-2"></i></span>
             <span class="alert-inner--text">
               <strong>

@@ -3,6 +3,7 @@ class CreateAddresses < ActiveRecord::Migration[5.2]
     create_table :addresses do |t|
       t.belongs_to :addressable, polymorphic: true, index: { name: 'index_addresses_addressable' }
       t.string :cep
+      t.string :district
       t.string :street
       t.string :number
       t.references :city, foreign_key: true

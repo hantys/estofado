@@ -1,0 +1,97 @@
+pt-BR:
+  activerecord:
+    models:
+      user: Usuário
+      order: Pedido
+      phone: Contato
+      address: Endereço
+      settings: Configurações
+      payment: Pagamento
+      product: Produto
+      client: Cliente
+      state: Estado
+      city: Cidade
+
+    attributes:
+      user:
+        name: Nome
+        username: Login
+        email: E-mail
+        password: Senha
+        created_at: Efetuado em
+        updated_at: Atualizado em
+
+      order:
+        user_id: Usuário
+        user: Usuário
+        client_id: Cliente
+        client: Cliente
+        product_id: Produto
+        product: Produto
+        cost: Preço
+        paid: Débito
+        payday: Vencimento
+        status: Situação
+        note: Observação
+        created_at: Efetuado em
+        updated_at: Atualizado em
+
+      phone:
+        number: Número
+        created_at: Efetuado em
+        updated_at: Atualizado em
+
+      address:
+        cep: Cep
+        district: Bairro
+        street: Rua
+        number: Número
+        city: Cidade
+        state: Estado
+        created_at: Efetuado em
+        updated_at: Atualizado em
+
+      settings:
+        customer_reminder: Lembrete de retorno
+        created_at: Efetuado em
+        updated_at: Atualizado em
+
+      payment:
+        user_id: Usuário
+        user: Usuário
+        order_id: Pedido
+        order: Pedido
+        value: valor
+        payday: Pago Em
+        status: Situação
+        note: Observação
+        created_at: Efetuado em
+        updated_at: Atualizado em
+
+      product:
+        name: Nome
+        note: Observação
+        created_at: Efetuado em
+        updated_at: Atualizado em
+
+      client:
+        name: Nome
+        cpf: CPF
+        image: Foto
+        status: Situação
+        created_at: Efetuado em
+        updated_at: Atualizado em
+
+      state:
+        name: Nome
+        acronym: UF
+        created_at: Efetuado em
+        updated_at: Atualizado em
+
+      city:
+        name: Nome
+        capital: Capital?
+        state: Estado
+        state_id: Estado
+        created_at: Efetuado em
+        updated_at: Atualizado em
