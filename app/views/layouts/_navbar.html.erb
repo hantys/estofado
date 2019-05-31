@@ -1,33 +1,57 @@
 <nav class="navbar navbar-expand-md fixed-top navbar-dark" style="background-color: indigo;">
-  <a class="navbar-brand" href="#">Carioca Poltronas</a>
+  <%= link_to 'Carioca Poltronas', root_path, class: 'navbar-brand' %>
   <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Visão Geral <span class="sr-only">(current)</span></a>
+      <li class="nav-item <%= active_class('home') %>">
+        <%= link_to root_path, class: 'nav-link' do %>
+          Visão Geral
+        <% end %>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pagamentos Pendentes</a>
+      <li class="nav-item <%= active_class('payments') %>">
+        <%= link_to payments_path, class: 'nav-link' do %>
+          Pagamentos Pendentes
+        <% end %>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pedidos</a>
+      <li class="nav-item <%= active_class('orders') %>">
+        <%= link_to orders_path, class: 'nav-link' do %>
+          Pedidos
+        <% end %>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Clientes</a>
+      <li class="nav-item <%= active_class('clients') %>">
+        <%= link_to clients_path, class: 'nav-link' do %>
+          Clientes
+        <% end %>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Usuários</a>
+      <li class="nav-item <%= active_class('users') %>">
+        <%= link_to users_path, class: 'nav-link' do %>
+          Usuários
+        <% end %>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Relatórios</a>
+      <li class="nav-item <%= active_class('home') %> dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Relatórios
+        </a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <%= link_to root_path, class: "dropdown-item #{active_class('home')}" do %>
+            Action
+          <% end %>
+          <%= link_to root_path, class: "dropdown-item #{active_class('home')}" do %>
+            Another action
+          <% end %>
+          <%= link_to root_path, class: "dropdown-item #{active_class('home')}" do %>
+            Something else here
+          <% end %>
         </div>
+      </li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li role="presentation" class="">
+        <%= link_to('Sair', destroy_user_session_path, class: 'btn btn-1 btn-danger', method: :delete) %>
       </li>
     </ul>
   </div>

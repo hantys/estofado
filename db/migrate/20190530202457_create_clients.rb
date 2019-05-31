@@ -5,8 +5,10 @@ class CreateClients < ActiveRecord::Migration[5.2]
       t.string :cpf
       t.string :image
       t.string :status
+      t.datetime  :deleted_at
 
       t.timestamps
     end
+    add_index :clients, :deleted_at
   end
 end

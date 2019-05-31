@@ -49,7 +49,7 @@ module Estofado
       g.test_framework :rspec,
                        routing_specs: false,
                        view_specs: true,
-                       helper_specs: true,
+                       helper_specs: false,
                        controller_specs: false
     end
   end

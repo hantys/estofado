@@ -12,6 +12,11 @@ class User < ApplicationRecord
   devise :database_authenticatable,
          :recoverable, :rememberable, :validatable, :timeoutable
 
+  has_many :addresses, as: :addressable
+  has_many :phones, as: :phoneable
+  has_many :payments
+  has_many :orders
+
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
     login = conditions.delete(:login)

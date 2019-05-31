@@ -1,0 +1,9 @@
+# frozen_string_literal: true
+
+FactoryBot.define do
+  factory :city do
+    name { 'MyString' }
+    capital { false }
+    state { nil }
+  end
+end

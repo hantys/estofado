@@ -6,7 +6,7 @@ webpack:
 	./bin/webpack-dev-server
 
 install:
-	bundle install
+	bundle install; yarn install
 
 update:
 	bundle update

@@ -21,26 +21,39 @@
   <body class="bg-light">
     <%= render 'layouts/navbar' %>
     <main role="main" class="container-fluid">
-      <% flash.each do |name, msg| %>
-        <% aux = 'alert-primary' %>
-        <% case name
-          when 'notice'
-            aux = 'alert-primary'
-          when 'success'
-            aux = 'alert-success'
-          when 'error'
-            aux = 'alert-danger'
-          when 'alert'
-            aux = 'alert-warning'
-          end
-        %>
-        <%= content_tag(:div, msg, class: "alert #{aux} text-center") %>
-      <% end %>
       <div class="my-3 p-3 bg-white rounded box-shadow ">
+        <% flash.each do |name, msg| %>
+          <% aux = 'alert-primary' %>
+          <% case name
+            when 'notice'
+              aux = 'alert-primary'
+            when 'success'
+              aux = 'alert-success'
+            when 'error'
+              aux = 'alert-danger'
+            when 'alert'
+              aux = 'alert-warning'
+            end
+          %>
+          <div class="alert <%= aux %> text-center alert-dismissible fade show" role="alert">
+            <span class="alert-inner--icon"><i class="ni ni-like-2"></i></span>
+            <span class="alert-inner--text">
+              <strong>
+                <%= msg %>
+              </strong>
+            </span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <%#= content_tag(:div, msg, class: "alert #{aux} text-center") %>
+        <% end %>
         <%= yield %>
       </div>
     </main>
 
+    <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
   </body>
 </html>
