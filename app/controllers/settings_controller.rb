@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class SettingsController < ApplicationController
-  before_action :set_setting, only: [:show, :edit, :update, :destroy]
+  before_action :set_setting, only: %i[show edit update destroy]
 
   # GET /settings
   # GET /settings.json
@@ -62,13 +64,14 @@ class SettingsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_setting
-      @setting = Setting.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def setting_params
-      params.require(:setting).permit(:customer_reminder)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_setting
+    @setting = Setting.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def setting_params
+    params.require(:setting).permit(:customer_reminder)
+  end
 end

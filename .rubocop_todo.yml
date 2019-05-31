@@ -8,9 +8,9 @@
 
 # Offense count: 1
 # Cop supports --auto-correct.
-Layout/CommentIndentation:
-  Exclude:
-    - 'app/models/core/user.rb'
+# Layout/CommentIndentation:
+#   Exclude:
+#     - 'app/models/core/user.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
@@ -39,7 +39,7 @@ Layout/SpaceInsideParens:
 # Configuration parameters: AllowInHeredoc.
 Layout/TrailingWhitespace:
   Exclude:
-    - 'app/models/core/group.rb'
+    # - 'app/models/core/group.rb'
     - 'config/application.rb'
 
 # Offense count: 1
@@ -108,22 +108,22 @@ Style/ClassAndModuleChildren:
 
 # Offense count: 2
 # Cop supports --auto-correct.
-Style/ExpandPathArguments:
-  Exclude:
-    - 'lib/roles_builder.rb'
-    - 'lib/tasks/reset_roles.rake'
+# Style/ExpandPathArguments:
+#   Exclude:
+#     - 'lib/roles_builder.rb'
+#     - 'lib/tasks/reset_roles.rake'
 
 # Offense count: 2
 # Cop supports --auto-correct.
-Style/IfUnlessModifier:
-  Exclude:
-    - 'lib/roles_builder.rb'
-    - 'lib/tasks/migration_index_checker.rake'
+# Style/IfUnlessModifier:
+#   Exclude:
+#     - 'lib/roles_builder.rb'
+#     - 'lib/tasks/migration_index_checker.rake'
 
 # Offense count: 1
-Style/MultilineBlockChain:
-  Exclude:
-    - 'lib/tasks/migration_index_checker.rake'
+# Style/MultilineBlockChain:
+#   Exclude:
+#     - 'lib/tasks/migration_index_checker.rake'
 
 # Offense count: 3
 # Cop supports --auto-correct.
