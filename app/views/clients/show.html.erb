@@ -1,24 +1,54 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Client -%>
+<div class="card-header card-header-primary d-flex justify-content-lg-between align-items-center">
+  <span></span>
+  <h3 class='mb-0 font-weight-bold text-uppercase'>
+    <%=t '.title', :default => model_class.model_name.human.pluralize.titleize %>
+  </h3>
+  <div class="d-flex flex-row justify-content-start align-items-center ml-auto">
+      <%= link_to t('.back', :default => t("helpers.links.back")),
+                    clients_path, :class => 'btn btn-secondary ml-2' %>
+      <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                    edit_client_path(@client), :class => 'btn btn-primary ml-2' %>
+      <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                    client_path(@client),
+                    :method => 'delete',
+                    :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                    :class => 'btn btn-danger ml-2' %>
+  </div>
+</div>
+<div class="card-body">
+  <div class="row mt-4 mb-4">
+    <div class="col-6">
+      <p>
+        <strong class='font-weight-bold'>
+          <%= model_class.human_attribute_name(:image) %>:
+        </strong>
+        <%= @client.image %>
+        <hr/>
 
-<p>
-  <strong>Name:</strong>
-  <%= @client.name %>
-</p>
+        <strong>
+          <%= model_class.human_attribute_name(:name) %>:
+        </strong>
+        <%= @client.name %>
+        <hr>
 
-<p>
-  <strong>Cpf:</strong>
-  <%= @client.cpf %>
-</p>
+        <strong>
+          <%= model_class.human_attribute_name(:cpf) %>:
+        </strong>
+        <%= @client.cpf %>
+        <hr/>
 
-<p>
-  <strong>Image:</strong>
-  <%= @client.image %>
-</p>
+        <strong>
+          <%= model_class.human_attribute_name(:status) %>:
+        </strong>
+        <%= @client.status %>
+        <hr/>
 
-<p>
-  <strong>Status:</strong>
-  <%= @client.status %>
-</p>
-
-<%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', clients_path %>
+      </p>
+    </div>
+    <div class="col-6">
+      <p>
+      </p>
+    </div>
+  </div>
+</div>

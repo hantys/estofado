@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2019_05_31_034836) do
     t.string "addressable_type"
     t.bigint "addressable_id"
     t.string "cep"
+    t.string "district"
     t.string "street"
     t.string "number"
     t.bigint "city_id"
@@ -48,7 +49,7 @@ ActiveRecord::Schema.define(version: 2019_05_31_034836) do
     t.string "name"
     t.string "cpf"
     t.string "image"
-    t.string "status"
+    t.integer "status"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -2,9 +2,9 @@
 
 FactoryBot.define do
   factory :client do
-    name { 'MyString' }
-    cpf { 'MyString' }
+    name { Faker::Name.name }
+    cpf { '3453454554' }
     image { 'MyString' }
-    status { 'MyString' }
+    status { 1 }
   end
 end

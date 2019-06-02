@@ -1,37 +1,16 @@
-<%= form_with(model: client, local: true) do |form| %>
-  <% if client.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(client.errors.count, "error") %> prohibited this client from being saved:</h2>
+<%= simple_form_for(@client) do |f| %>
+  <%= f.error_notification %>
 
-      <ul>
-      <% client.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div class="row">
+    <div class="col-lg-6">
+      <%= f.input :name %>
+      <%= f.input :cpf, input_html: { class: 'cpf' } %>
+      <%= f.input :image %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <div class="col-lg-6">
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :cpf %>
-    <%= form.text_field :cpf %>
-  </div>
-
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.text_field :image %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <hr>
+  <%= f.button :submit, class: 'btn btn-success' %>
+  <%= link_to 'Cancelar', :back, class: 'btn btn-danger' %>
 <% end %>

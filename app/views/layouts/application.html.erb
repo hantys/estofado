@@ -21,7 +21,7 @@
   <body class="bg-light">
     <%= render 'layouts/navbar' %>
     <main role="main" class="container-fluid">
-      <div class="my-3 p-3  rounded box-shadow ">
+      <div class="card my-5">
         <% flash.each do |name, msg| %>
           <% aux = 'alert-primary' %>
           <% case name

@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :product do
-    name { 'MyString' }
+    name { Faker::Commerce.product_name }
     note { 'MyText' }
     status { 1 }
   end

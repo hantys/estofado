@@ -1,0 +1,8 @@
+<li class="page-item">
+  <% unless current_page.last? %>
+    <%= link_to url, remote: remote, rel: 'next', class: 'page-link' do %>
+      <i class="fa fa-angle-right"></i>
+      <span class="sr-only"><%= raw(t 'views.pagination.next') %></span>
+    <% end %>
+  <% end %>
+</li>

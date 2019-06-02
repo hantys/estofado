@@ -2,12 +2,12 @@
 
 FactoryBot.define do
   factory :order do
-    user { nil }
-    client { nil }
-    product { nil }
+    user_id { 1 }
+    client_id { rand(1..20) }
+    product_id { rand(1..10) }
     cost { 1.5 }
     paid { 1.5 }
-    payday { '2019-05-31' }
+    payday { Date.today + (rand(1..6)).day }
     status { 1 }
     note { 'MyText' }
   end

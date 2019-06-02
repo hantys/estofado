@@ -4,10 +4,10 @@ pt-BR:
       admin: Administrador
       manager: Gerente
       representative: Representante
-    composition:
-      kind:
-        raw_material: Matéria-prima
-        composition: Composição
+    client:
+      status:
+        active: Com pedido
+        finish: Sem pedido
     stock_final_product:
       kind:
         raw_material: Batida

@@ -6,7 +6,7 @@ class SettingsController < ApplicationController
   # GET /settings
   # GET /settings.json
   def index
-    @settings = Setting.all
+    @settings = Setting.first
   end
 
   # GET /settings/1

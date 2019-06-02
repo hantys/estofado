@@ -43,7 +43,10 @@ gem 'enum_help'
 gem 'nested_form'
 gem 'ransack'
 
+gem 'font-awesome-sass'
+
 gem 'bootstrap_form', '>= 4.2.0'
+gem 'simple_form'
 
 gem 'paper_trail' # https://github.com/paper-trail-gem/paper_trail
 gem 'paper_trail-association_tracking'

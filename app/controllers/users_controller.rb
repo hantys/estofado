@@ -7,7 +7,9 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     # @users = User.accessible_by(current_ability).order(id: :desc).page params[:page]
-    @users = User.order(id: :desc)
+    @q = User.ransack(params[:q])
+
+    @users = @q.result.order(id: :desc).page params[:page]
   end
 
   # GET /users/1

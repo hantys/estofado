@@ -6,7 +6,9 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    @q = Order.ransack(params[:q])
+
+    @orders = @q.result.order(id: :desc).page params[:page]
   end
 
   # GET /orders/1
