@@ -122,6 +122,10 @@ group :development do
   # Read more: https://github.com/Mic92/mina-sidekiq
   gem 'mina-sidekiq'
 
+  gem 'foreman'
+
+  gem 'mina-webpacker'
+
   # This gem implements the rspec command for Spring.
   gem 'spring-commands-rspec'
 end

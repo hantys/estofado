@@ -6,8 +6,19 @@
       <%= f.input :name %>
       <%= f.input :cpf, input_html: { class: 'cpf' } %>
       <%= f.input :image %>
+      <%= f.fields_for :phones do |phone_form| %>
+        <%= phone_form.input :number, label: 'Contato' %>
+      <% end %>
     </div>
     <div class="col-lg-6">
+      <%= f.fields_for :address do |address_form| %>
+        <%= address_form.input :cep %>
+        <%= address_form.input :district %>
+        <%= address_form.input :street %>
+        <%= address_form.input :number %>
+        <%= address_form.input :city_id %>
+        <%= address_form.input :state_id %>
+      <% end %>
     </div>
   </div>
   <hr>
