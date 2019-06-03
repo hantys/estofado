@@ -22,13 +22,15 @@ set :forward_agent, true
 
 set :shared_dirs, fetch(:shared_dirs, []).push('log', 'node_modules', 'tmp', 'public/uploads', 'public/assets')
 set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/application.yml', 'config/secrets.yml')
+set :rvm_use_path, '/usr/local/rvm/scripts/rvm'
 
-# set :rvm_use_path, '/usr/local/rvm/scripts/rvm'
+# set :bundle_bin, '/usr/local/rvm/gems/default/gems/bundler-2.0.1/exe/bundle'
+
 # set :keep_releases, 10
 
 # set :force_asset_precompile, true
-task :environment do
-  invoke :'rvm:use', 'ruby-2.6.3'
+task :remote_environment do
+  invoke :'rvm:use', 'ruby-2.6.3@default'
 end
 
 task :setup do
@@ -73,18 +75,28 @@ task :migrate do
   command %(bundle exec rake db:migrate)
 end
 
+task bundle_custom: :remote_environment do
+  # command "cd #{deploy_to}/current"
+  # command %(mkdir -p "/var/www/estofado/shared/bundle")
+  # command %(mkdir -p "./vendor")
+  # command %(ln -s "/var/www/estofado/shared/bundle" "./vendor/bundle")
+
+  command 'bundle install --without development test --path "vendor/bundle"'
+end
+
 desc 'Deploys the current version to the server.'
 task :deploy do
   on :before_hook do
     # Put things to run locally before ssh
   end
   deploy do
-    # Put things that will set up an empty directory into a fully set-up
-    # instance of your project.
+    # Put things that will se invoke :'rbenv:load'ty directory into a fully set-up
+    # instance of your projec invoke :'rbenv:load'
     invoke :'git:clone'
-    # invoke :'sidekiq:quiet'
+    # invoke :'sidekiq:quiet' invoke :'rbenv:load'
     invoke :'deploy:link_shared_paths'
-    invoke :'bundle:install'
+    invoke :bundle_custom
+    # invoke :'bundle:install'
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
     invoke :'webpacker:compile'
