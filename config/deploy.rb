@@ -20,7 +20,7 @@ set :branch, 'master'
 
 set :forward_agent, true
 
-set :shared_dirs, fetch(:shared_dirs, []).push('log', 'node_modules', 'tmp', 'public/uploads', 'public/assets')
+set :shared_dirs, fetch(:shared_dirs, []).push('log', 'node_modules', 'tmp', 'public/uploads', 'public/assets', 'public/packs')
 set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/application.yml', 'config/secrets.yml')
 set :rvm_use_path, '/usr/local/rvm/scripts/rvm'
 
@@ -54,6 +54,9 @@ task :setup do
 
   command %(mkdir -p "/#{fetch(:shared_path)}/public/assets")
   command %(chmod g+rx,u+rwx "/#{fetch(:shared_path)}/public/assets")
+
+  command %(mkdir -p "/#{fetch(:shared_path)}/public/packs")
+  command %(chmod g+rx,u+rwx "/#{fetch(:shared_path)}/public/packs")
 
   command %(mkdir -p "#{fetch(:deploy_to)}/shared/pids/")
   command %(mkdir -p "#{fetch(:deploy_to)}/shared/log/")
@@ -108,8 +111,8 @@ task :deploy do
     # invoke :'bundle:install'
     invoke :'rails:db_migrate'
     # invoke :'rails:assets_precompile'
-    invoke :webpack
-    # invoke :'webpacker:compile'
+    # invoke :webpack
+    invoke :'webpacker:compile'
     invoke :'deploy:cleanup'
 
     on :launch do
