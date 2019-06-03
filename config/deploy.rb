@@ -4,13 +4,13 @@
 require 'mina/bundler'
 require 'mina/rails'
 require 'mina/git'
-require 'mina/rvm'
+# require 'mina/rvm'
 require 'mina/puma'
 require 'mina/webpacker'
 # require 'mina_sidekiq/tasks'
 
 set :application, 'estofado'
-set :domain, '159.65.167.71'
+set :domain, '134.209.39.31'
 set :user, 'deploy'
 
 set :deploy_to, '/var/www/estofado'
@@ -22,16 +22,16 @@ set :forward_agent, true
 
 set :shared_dirs, fetch(:shared_dirs, []).push('log', 'node_modules', 'tmp', 'public/uploads', 'public/assets', 'public/packs')
 set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/application.yml', 'config/secrets.yml')
-set :rvm_use_path, '/usr/local/rvm/scripts/rvm'
+# set :rvm_use_path, '/usr/local/rvm/scripts/rvm'
 
 # set :bundle_bin, '/usr/local/rvm/gems/default/gems/bundler-2.0.1/exe/bundle'
 
 # set :keep_releases, 10
 
 # set :force_asset_precompile, true
-task :remote_environment do
-  invoke :'rvm:use', 'ruby-2.6.3@default'
-end
+# task :remote_environment do
+#   invoke :'rvm:use', 'ruby-2.6.3@default'
+# end
 
 task :setup do
   command %(mkdir -p "/#{fetch(:shared_path)}/log")
@@ -107,11 +107,11 @@ task :deploy do
     invoke :'git:clone'
     # invoke :'sidekiq:quiet' invoke :'rbenv:load'
     invoke :'deploy:link_shared_paths'
-    invoke :bundle_custom
-    # invoke :'bundle:install'
+    # invoke :bundle_custom
+    invoke :'bundle:install'
     invoke :'rails:db_migrate'
-    # invoke :'rails:assets_precompile'
-    # invoke :webpack
+    invoke :'rails:assets_precompile'
+    invoke :webpack
     invoke :'webpacker:compile'
     invoke :'deploy:cleanup'
 
