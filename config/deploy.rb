@@ -84,6 +84,15 @@ task bundle_custom: :remote_environment do
   command 'bundle install --without development test --path "vendor/bundle"'
 end
 
+desc 'Compile assets with webpack'
+task webpack: :remote_environment do
+  # command %{yarn install}
+  # command %{NODE_ENV=production RAILS_ENV=production bundle exec rails webpacker:compile}
+  command 'bundle exec rails webpacker:compile RAILS_ENV=production'
+  # command %{bundle exec rails webpacker:compile}
+  # command 'bundle exec rails webpacker:compile RAILS_ENV=production'
+end
+
 desc 'Deploys the current version to the server.'
 task :deploy do
   on :before_hook do
@@ -99,12 +108,14 @@ task :deploy do
     # invoke :'bundle:install'
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
-    invoke :'webpacker:compile'
+    invoke :webpack
+    # invoke :'webpacker:compile'
     invoke :'deploy:cleanup'
 
     on :launch do
-      # invoke :'puma:restart'
-      invoke :'puma:hard_restart'
+      invoke :'puma:restart'
+      # invoke :'puma:stop'
+      # invoke :'puma:start'
       # invoke :'sidekiq:restart'
       # invoke :'sitemap:refresh'
     end
