@@ -111,7 +111,7 @@ task :deploy do
     invoke :'bundle:install'
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
-    invoke :webpack
+    # invoke :webpack
     invoke :'webpacker:compile'
     invoke :'deploy:cleanup'
 
