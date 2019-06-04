@@ -58,11 +58,19 @@ gem 'paranoia', '~> 2.2'
 
 gem 'kaminari'
 
+gem 'correios_api', github: 'hantys/correios_api' # , branch: 'update_rails'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+
+# factory_bot is a fixtures replacement with a straightforward definition syntax, support for multiple build strategies: https://github.com/thoughtbot/factory_bot_rails
+gem 'factory_bot_rails'
+
+# This gem is a port of Perl's Data::Faker library that generates fake data.: https://github.com/stympy/faker
+gem 'faker'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -94,12 +102,6 @@ group :development, :test do
   # Read more: https://matchers.shoulda.io, https://github.com/thoughtbot/shoulda-matchers
   gem 'shoulda'
   gem 'shoulda-matchers'
-
-  # factory_bot is a fixtures replacement with a straightforward definition syntax, support for multiple build strategies: https://github.com/thoughtbot/factory_bot_rails
-  gem 'factory_bot_rails'
-
-  # This gem is a port of Perl's Data::Faker library that generates fake data.: https://github.com/stympy/faker
-  gem 'faker'
 end
 
 group :development do

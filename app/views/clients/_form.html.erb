@@ -1,23 +1,41 @@
 <%= simple_form_for(@client) do |f| %>
   <%= f.error_notification %>
 
+  <% if params[:client].present?
+    if params[:client][:state_id].present?
+      city = City.where(state_id: params[:client][:state_id]).select(:id, :name)
+      select_city = params[:client][:city_id]
+    else
+      city = []
+      select_city = nil
+    end
+  else
+    city = []
+    select_city = nil
+  end %>
+
+  <% if @client.address.try(:city_id).present? %>
+    <% city = City.where(state_id: @client.address.state_id).select(:id, :name) %>
+    <% select_city = @client.address.city_id %>
+  <% end %>
+
   <div class="row">
     <div class="col-lg-6">
       <%= f.input :name %>
       <%= f.input :cpf, input_html: { class: 'cpf' } %>
       <%= f.input :image %>
       <%= f.fields_for :phones do |phone_form| %>
-        <%= phone_form.input :number, label: 'Contato' %>
+        <%= phone_form.input :number, label: 'Contato', input_html: { class: 'phone' } %>
       <% end %>
     </div>
     <div class="col-lg-6">
       <%= f.fields_for :address do |address_form| %>
-        <%= address_form.input :cep %>
-        <%= address_form.input :district %>
-        <%= address_form.input :street %>
-        <%= address_form.input :number %>
-        <%= address_form.input :city_id %>
-        <%= address_form.input :state_id %>
+        <%= address_form.input :cep, label: 'Cep', input_html: { class: 'cep' } %>
+        <%= address_form.input :district, label: 'Bairro', input_html: { class: 'district' } %>
+        <%= address_form.input :street, label: 'Rua/Av.', input_html: { class: 'street' } %>
+        <%= address_form.input :number, label: 'Número', input_html: { class: '' } %>
+        <%= address_form.input :state, label: 'Estado', collection: State.order(:name), prompt: "Escolha um estado", input_html: { class: 'state' } %>
+        <%= address_form.input :city, label: 'Cidade', collection: city, selected: select_city, prompt: "Escolha uma cidade", input_html: { class: 'city' } %>
       <% end %>
     </div>
   </div>

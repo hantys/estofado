@@ -1,32 +1,15 @@
-# puts "### Cidades e Estados"
-# load "db/imports/states_cities.rb"
+puts "### Cidades e Estados"
+load "db/imports/states_cities.rb"
 
+puts "### Usuario"
+User.create email: 'pedro.fausto@hotmail.com', username: 'pedro', password: '123456'
+User.create email: 'danilo@danilo.com', username: 'danilo', password: '123456'
 
-# puts '#Funcionatios'
-
-# state = State.find(rand(1..27))
-# Employee.create name: 'Pedro Fausto', email: 'pedro.fausto@hotmail.com', cpf: FFaker::IdentificationBR.pretty_cpf, phone1:FFaker::PhoneNumberBR.mobile_phone_number, state: state, city: state.cities.sample(1).last, office: FFaker::JobBR.title, cep: FFaker::AddressBR.zip_code, number: rand(100..9999)
-
-# state = State.find(rand(1..27))
-# Employee.create name: 'Vitor Alves', email: 'vitor@vitor.com', cpf: FFaker::IdentificationBR.pretty_cpf, phone1:FFaker::PhoneNumberBR.mobile_phone_number, state: state, city: state.cities.sample(1).last, office: FFaker::JobBR.title, cep: FFaker::AddressBR.zip_code, number: rand(100..9999)
-
-
-# puts '#Usuario'
-# User.create!(username: 'pedro', email: 'pedro.fausto@hotmail.com', password: 'pi854098', employee: Employee.first, roles: 'admin')
-# User.create!(username: 'vitor', email: 'vitor@vitor.com', password: '12345678', employee: Employee.last, roles: 'admin')
-
-# puts "### Itens do orcamento"
-# load "db/imports/product.rb"
-
-# puts '#Tipo de entrega'
-# DeliveryOption.create! name: 'Entrega na loja'
-# DeliveryOption.create! name: 'Retirada em mãos'
-
-# puts '#Tipo de pagamento'
-# TypeOfPayment.create! name: 'Boleto bancário'
-# TypeOfPayment.create! name: 'Cartão de crédito'
-# TypeOfPayment.create! name: 'A vista'
-# TypeOfPayment.create! name: 'Cheque'
-# TypeOfPayment.create! name: 'Débito'
-# TypeOfPayment.create! name: 'Transferência'
-# TypeOfPayment.create! name: 'Depósito'
+puts "### Client"
+FactoryBot.create_list :client, 20
+puts "### Product"
+FactoryBot.create_list :product, 10
+puts "### Order"
+FactoryBot.create_list :order, 15
+puts "### Payment"
+FactoryBot.create_list :payment, 15
