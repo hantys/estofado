@@ -2,10 +2,14 @@
 
 class Client < ApplicationRecord
   enum status: { active: 0, finish: 1 }
-  paginates_per 5
-  has_one :address, as: :addressable
-  has_many :phones, as: :phoneable
+  mount_uploader :image, FotoUploader
+  has_one :address, as: :addressable, dependent: :destroy
+  has_many :phones, as: :phoneable, dependent: :destroy
   has_many :orders
+
+  accepts_nested_attributes_for :address, allow_destroy: true
+  accepts_nested_attributes_for :phones, allow_destroy: true
+  accepts_nested_attributes_for :orders, allow_destroy: true
 
   validates_presence_of(:name)
 end

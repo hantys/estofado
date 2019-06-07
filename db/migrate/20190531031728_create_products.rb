@@ -3,7 +3,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
     create_table :products do |t|
       t.string :name
       t.text :note
-      t.integer :status
+      t.integer :status, default: 0
       t.datetime  :deleted_at
 
       t.timestamps

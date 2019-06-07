@@ -4,7 +4,7 @@ class CreateClients < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :cpf
       t.string :image
-      t.integer :status
+      t.integer :status, default: 0
       t.datetime  :deleted_at
 
       t.timestamps

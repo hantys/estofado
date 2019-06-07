@@ -78,6 +78,9 @@ pt-BR:
         name: Nome
         cpf: CPF
         image: Foto
+        phones: Contatos
+        phone: Contato
+        address: Endereço
         status: Situação
         created_at: Efetuado em
         updated_at: Atualizado em

@@ -14,11 +14,15 @@ class ClientsController < ApplicationController
   # GET /clients/1
   # GET /clients/1.json
   def show
+    @address = @client.address
+    @phones = @client.phones
   end
 
   # GET /clients/new
   def new
     @client = Client.new
+    @client.build_address
+    @client.phones.build
   end
 
   # GET /clients/1/edit
@@ -75,6 +79,6 @@ class ClientsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def client_params
-    params.require(:client).permit(:name, :cpf, :image, :status)
+    params.require(:client).permit!
   end
 end

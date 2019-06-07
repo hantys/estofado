@@ -5,7 +5,7 @@ class CreatePayments < ActiveRecord::Migration[5.2]
       t.references :order, foreign_key: true
       t.float :value
       t.date :payday
-      t.integer :status
+      t.integer :status, default: 0
       t.text :note
       t.datetime  :deleted_at
 

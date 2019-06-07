@@ -7,7 +7,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.float :cost
       t.float :paid
       t.date :payday
-      t.integer :status
+      t.integer :status, default: 0
       t.text :note
       t.datetime  :deleted_at
 

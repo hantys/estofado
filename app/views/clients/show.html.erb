@@ -1,4 +1,5 @@
 <%- model_class = Client -%>
+<%- address_class = Address -%>
 <div class="card-header card-header-primary d-flex justify-content-lg-between align-items-center">
   <span></span>
   <h3 class='mb-0 font-weight-bold text-uppercase'>
@@ -18,37 +19,62 @@
 </div>
 <div class="card-body">
   <div class="row mt-4 mb-4">
-    <div class="col-6">
-      <p>
-        <strong class='font-weight-bold'>
-          <%= model_class.human_attribute_name(:image) %>:
-        </strong>
-        <%= @client.image %>
-        <hr/>
-
-        <strong>
-          <%= model_class.human_attribute_name(:name) %>:
-        </strong>
-        <%= @client.name %>
-        <hr>
-
-        <strong>
-          <%= model_class.human_attribute_name(:cpf) %>:
-        </strong>
-        <%= @client.cpf %>
-        <hr/>
-
-        <strong>
-          <%= model_class.human_attribute_name(:status) %>:
-        </strong>
-        <%= @client.status %>
-        <hr/>
-
-      </p>
+    <div class="col-sm">
+      <%= image_tag @client.image_url(:midi) %>
     </div>
-    <div class="col-6">
-      <p>
-      </p>
+  </div>
+  <div class="row mt-4 mb-4">
+    <div class="col-sm">
+      <strong>
+        <%= model_class.human_attribute_name(:name) %>:
+      </strong>
+      <%= @client.name %>
+      <hr>
+
+      <strong>
+        <%= model_class.human_attribute_name(:cpf) %>:
+      </strong>
+      <%= @client.cpf %>
+      <hr/>
+
+      <strong>
+        <%= model_class.human_attribute_name(:phone) %>:
+      </strong>
+      <% @phones.each do |phone| %>
+        <%= phone.number %>
+      <% end %>
+      <hr/>
+
+      <strong>
+        <%= model_class.human_attribute_name(:status) %>:
+      </strong>
+      <%= @client.status %>
+      <hr/>
+    </div>
+    <div class="col-sm">
+      <strong>
+        <%= address_class.human_attribute_name(:cep) %>:
+      </strong>
+      <%= @address.cep %>
+      <hr/>
+
+      <strong>
+        <%= address_class.human_attribute_name(:street) %>:
+      </strong>
+      <%= @address.street %>, <%= @address.number %>
+      <hr/>
+
+      <strong>
+        <%= address_class.human_attribute_name(:district) %>:
+      </strong>
+      <%= @address.district %>
+      <hr/>
+
+      <strong>
+        <%= address_class.human_attribute_name(:city) %>:
+      </strong>
+      <%= @address.city.name %> - <%= @address.state.acronym %>
+      <hr/>
     </div>
   </div>
 </div>
