@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2019_05_31_034836) do
     t.string "name"
     t.string "cpf"
     t.string "image"
-    t.integer "status"
+    t.integer "status", default: 0
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2019_05_31_034836) do
     t.float "cost"
     t.float "paid"
     t.date "payday"
-    t.integer "status"
+    t.integer "status", default: 0
     t.text "note"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 2019_05_31_034836) do
     t.bigint "order_id"
     t.float "value"
     t.date "payday"
-    t.integer "status"
+    t.integer "status", default: 0
     t.text "note"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 2019_05_31_034836) do
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.text "note"
-    t.integer "status"
+    t.integer "status", default: 0
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

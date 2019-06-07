@@ -15,16 +15,20 @@ class FotoUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
+  def default_url
+    'default.png'
+  end
+
   version :thumb do
     resize_to_fill(80, 80)
   end
 
   version :midi do
-    resize_to_fill(276,276)
+    resize_to_fill(276, 276)
   end
 
   version :large do
-    resize_to_fill(528,528)
+    resize_to_fill(528, 528)
     # process optimize: [{ quality: 90 }]
   end
 

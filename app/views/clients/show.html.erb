@@ -20,7 +20,7 @@
 <div class="card-body">
   <div class="row mt-4 mb-4">
     <div class="col-sm">
-      <%= image_tag @client.image_url(:midi) %>
+      <%= image_tag @client.image_url(:midi), alt: 'foto do usuario', width: 276, height: 276 %>
     </div>
   </div>
   <div class="row mt-4 mb-4">
@@ -48,7 +48,7 @@
       <strong>
         <%= model_class.human_attribute_name(:status) %>:
       </strong>
-      <%= @client.status %>
+      <%= @client.status_i18n %>
       <hr/>
     </div>
     <div class="col-sm">
@@ -77,4 +77,5 @@
       <hr/>
     </div>
   </div>
+  <%= render 'list_orders', '@orders': @client.orders %>
 </div>

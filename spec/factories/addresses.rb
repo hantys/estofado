@@ -2,11 +2,10 @@
 
 FactoryBot.define do
   factory :address do
-    addressable { '' }
-    cep { 'MyString' }
+    cep { '23432432' }
     street { 'MyString' }
     number { 'MyString' }
-    city { nil }
-    state { nil }
+    city_id { 12 }
+    state_id { 17 }
   end
 end

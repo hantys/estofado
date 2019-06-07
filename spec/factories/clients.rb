@@ -5,6 +5,9 @@ FactoryBot.define do
     name { Faker::Name.name }
     cpf { '3453454554' }
     image { 'MyString' }
-    status { 1 }
+    after(:create) do |client|
+      create(:phone, phoneable: client)
+      create(:address, addressable: client)
+    end
   end
 end

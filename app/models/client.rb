@@ -12,4 +12,5 @@ class Client < ApplicationRecord
   accepts_nested_attributes_for :orders, allow_destroy: true
 
   validates_presence_of(:name)
+  validates_presence_of(:cpf)
 end
