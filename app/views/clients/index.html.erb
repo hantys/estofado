@@ -1,54 +1,63 @@
 <%- model_class = Client -%>
 <div class="card-header card-header-primary d-flex justify-content-lg-between align-items-center">
-  <span></span>
   <h3 class='mb-0 font-weight-bold text-uppercase'>
     <%=t '.title', :default => model_class.model_name.human.pluralize.titleize %>
   </h3>
-  <%= link_to t('.new', :default => t("helpers.links.new")), new_client_path, class: "btn btn-primary" %>
+  <div class="ml-auto d-none d-md-block">
+    <div class="d-flex flex-row justify-content-start align-items-center">
+      <%= link_to t('.new', :default => t("helpers.links.new")), new_client_path, class: "btn btn-primary" %>
+    </div>
+  </div>
 </div>
+
 <div class="card-body">
+  <div class="ml-auto d-md-none mb-4">
+      <%= link_to t('.new', :default => t("helpers.links.new")), new_client_path, class: "btn btn-primary" %>
+  </div>
   <%= render 'search' %>
   <%= paginate @clients if @clients.size > 20 %>
   <%= page_entries_info @clients, entry_name: 'item' %>
   <%= paginate @clients %>
 
-  <table class="table table-bordered table-hover text-center">
-    <thead class="thead-light">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col"><%= model_class.human_attribute_name(:name) %></th>
-        <th scope="col"><%= model_class.human_attribute_name(:cpf) %></th>
-        <th scope="col"><%= model_class.human_attribute_name(:image) %></th>
-        <th scope="col"><%= model_class.human_attribute_name(:status) %></th>
-        <th scope="col"><%=t '.actions', :default => t("helpers.actions") %></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @clients.each do |client| %>
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover text-center">
+      <thead class="thead-light">
         <tr>
-          <td scope="row"><%= link_to client.id, client %></td>
-          <td><%= link_to client.name, client %></td>
-          <td><%= client.cpf %></td>
-          <td><%= client.image %></td>
-          <td><%= client.status %></td>
-          <td>
-            <%# if can? :update, client %>
-              <%= link_to edit_client_path(client), class: 'btn btn-primary has-icon' do %>
-                <!-- <i class="material-icons">edit</i> -->
-                <%= t('.edit', :default => t("helpers.links.edit")) %>
-              <% end %>
-            <%# end %>
-            <%# if can? :destroy, client %>
-              <%= link_to client, method: :delete, data: { confirm: t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, class: 'btn btn-danger has-icon' do %>
-                <!-- <i class="material-icons">delete</i> -->
-                <%= t('.destroy', :default => t("helpers.links.destroy")) %>
-              <% end %>
-            <%# end %>
-          </td>
+          <th scope="col">#</th>
+          <th scope="col"><%= model_class.human_attribute_name(:image) %></th>
+          <th scope="col"><%= model_class.human_attribute_name(:name) %></th>
+          <th scope="col"><%= model_class.human_attribute_name(:cpf) %></th>
+          <th scope="col"><%= model_class.human_attribute_name(:status) %></th>
+          <th scope="col"><%=t '.actions', :default => t("helpers.actions") %></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+
+      <tbody>
+        <% @clients.each do |client| %>
+          <tr>
+            <td scope="row"><%= link_to client.id, client %></td>
+            <td><%= image_tag client.image_url(:thumb), alt: 'foto do usuario', width: 80, height: 80 %></td>
+            <td><%= link_to client.name, client %></td>
+            <td><%= client.cpf %></td>
+            <td><%= client.status %></td>
+            <td>
+              <%# if can? :update, client %>
+                <%= link_to edit_client_path(client), class: 'btn btn-primary has-icon' do %>
+                  <!-- <i class="material-icons">edit</i> -->
+                  <%= t('.edit', :default => t("helpers.links.edit")) %>
+                <% end %>
+              <%# end %>
+              <%# if can? :destroy, client %>
+                <%= link_to client, method: :delete, data: { confirm: t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, class: 'btn btn-danger has-icon' do %>
+                  <!-- <i class="material-icons">delete</i> -->
+                  <%= t('.destroy', :default => t("helpers.links.destroy")) %>
+                <% end %>
+              <%# end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
   <%= paginate @clients %>
 </div>

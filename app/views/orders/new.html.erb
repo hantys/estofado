@@ -1,5 +1,11 @@
-<h1>New Order</h1>
-
-<%= render 'form', order: @order %>
-
-<%= link_to 'Back', orders_path %>
+<%- model_class = Order -%>
+<div class="card-header card-header-primary d-flex justify-content-lg-between align-items-center">
+  <span></span>
+  <h3 class='mb-0 font-weight-bold text-uppercase'>
+    <%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %>
+  </h3>
+  <span></span>
+</div>
+<div class="card-body">
+  <%= render 'form', order: @order %>
+</div>

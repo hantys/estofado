@@ -4,9 +4,16 @@
   <h3 class='mb-0 font-weight-bold text-uppercase'>
     <%=t '.title', :default => model_class.model_name.human.pluralize.titleize %>
   </h3>
-  <%= link_to t('.new', :default => t("helpers.links.new")), new_order_path, class: "btn btn-primary" %>
+  <div class="ml-auto d-none d-md-block">
+    <div class="d-flex flex-row justify-content-start align-items-center">
+      <%= link_to t('.new', :default => t("helpers.links.new")), new_order_path, class: "btn btn-primary" %>
+    </div>
+  </div>
 </div>
 <div class="card-body">
+  <div class="ml-auto d-md-none mb-4">
+      <%= link_to t('.new', :default => t("helpers.links.new")), new_order_path, class: "btn btn-primary" %>
+  </div>
   <%#= render 'search' %>
   <%= paginate @orders if @orders.size > 20 %>
   <%= page_entries_info @orders, entry_name: 'item' %>

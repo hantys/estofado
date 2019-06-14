@@ -2,32 +2,34 @@
 <legend>
   <%= model_class.human_attribute_name(:order) %>:
 </legend>
-<table class="table table-bordered table-hover text-center">
-  <thead class="thead-light">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col"><%= model_class.human_attribute_name(:user) %></th>
-      <th scope="col"><%= model_class.human_attribute_name(:product) %></th>
-      <th scope="col"><%= model_class.human_attribute_name(:cost) %></th>
-      <th scope="col"><%= model_class.human_attribute_name(:paid) %></th>
-      <th scope="col"><%= model_class.human_attribute_name(:payday) %></th>
-      <th scope="col"><%= model_class.human_attribute_name(:status) %></th>
-      <th scope="col"><%= model_class.human_attribute_name(:note) %></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @orders.each do |order| %>
+<div class="table-responsive">
+  <table class="table table-bordered table-hover text-center">
+    <thead class="thead-light">
       <tr>
-        <td scope="row"><%= link_to order.id, order %></td>
-        <td><%= order.user.name %></td>
-        <td><%= order.product.name %></td>
-        <td><%= order.cost %></td>
-        <td><%= order.paid %></td>
-        <td><%= order.payday %></td>
-        <td><%= order.status_i18n %></td>
-        <td><%= order.note %></td>
+        <th scope="col">#</th>
+        <th scope="col"><%= model_class.human_attribute_name(:user) %></th>
+        <th scope="col"><%= model_class.human_attribute_name(:product) %></th>
+        <th scope="col"><%= model_class.human_attribute_name(:cost) %></th>
+        <th scope="col"><%= model_class.human_attribute_name(:paid) %></th>
+        <th scope="col"><%= model_class.human_attribute_name(:payday) %></th>
+        <th scope="col"><%= model_class.human_attribute_name(:status) %></th>
+        <th scope="col"><%= model_class.human_attribute_name(:note) %></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @orders.each do |order| %>
+        <tr>
+          <td scope="row"><%= link_to order.id, order %></td>
+          <td><%= order.user.name %></td>
+          <td><%= order.product.name %></td>
+          <td><%= order.cost %></td>
+          <td><%= order.paid %></td>
+          <td><%= order.payday %></td>
+          <td><%= order.status_i18n %></td>
+          <td><%= order.note %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

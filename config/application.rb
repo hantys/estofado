@@ -9,6 +9,11 @@ ENV['RANSACK_FORM_BUILDER'] = '::SimpleForm::FormBuilder'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+Date::DATE_FORMATS.merge!( default: '%d/%m/%Y' )
+Time::DATE_FORMATS.merge!( default: '%d/%m/%Y  %T' )
+Time::DATE_FORMATS[:custom_date] = "%d/%m/%Y"
+Time::DATE_FORMATS[:custom_datetime] = "%d/%m/%Y %T"
+
 module Estofado
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.

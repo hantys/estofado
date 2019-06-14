@@ -55,12 +55,10 @@ const vmaskerMoney = () => {
         delimiter: '.',
         // Money unit -> "R$ 12.345.678,90"
         unit: 'R$',
-        // Money unit -> "12.345.678,90 R$"
-        suffixUnit: 'R$',
         // Force type only number instead decimal,
         // masking decimals with ",00"
         // Zero cents -> "R$ 1.234.567.890,00"
-        zeroCents: true
+   
       })
     })
   }
