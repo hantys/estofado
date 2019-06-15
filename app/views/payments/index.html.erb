@@ -4,10 +4,17 @@
   <h3 class='mb-0 font-weight-bold text-uppercase'>
     <%=t '.title', :default => model_class.model_name.human.pluralize.titleize %>
   </h3>
-  <%= link_to t('.new', :default => t("helpers.links.new")), new_payment_path, class: "btn btn-primary" %>
+  <div class="ml-auto d-none d-md-block">
+    <div class="d-flex flex-row justify-content-start align-items-center">
+      <%= link_to t('.new', :default => t("helpers.links.new")), new_payment_path, class: "btn btn-primary" %>
+    </div>
+  </div>
 </div>
 <div class="card-body">
-  <%#= render 'search' %>
+  <div class="ml-auto d-md-none mb-4">
+      <%= link_to t('.new', :default => t("helpers.links.new")), new_payment_path, class: "btn btn-primary" %>
+  </div>
+  <%= render 'search' %>
   <%= paginate @payments if @payments.size > 20 %>
   <%= page_entries_info @payments, entry_name: 'item' %>
   <%= paginate @payments %>
@@ -15,12 +22,13 @@
   <table class="table table-bpaymented table-hover text-center">
     <thead class="thead-light">
       <tr>
-        <th scope="col">#</th>
-        <th scope="col"><%= model_class.human_attribute_name(:user) %></th>
-        <th scope="col"><%= model_class.human_attribute_name(:order) %></th>
-        <th scope="col"><%= model_class.human_attribute_name(:value) %></th>
-        <th scope="col"><%= model_class.human_attribute_name(:payday) %></th>
-        <th scope="col"><%= model_class.human_attribute_name(:status) %></th>
+        <th scope="col"><%= sort_link @q, :id, '#', default_order: :desc %></th>
+        <th scope="col"><%= sort_link @q, :user_name, model_class.human_attribute_name(:user), default_order: :desc %></th>
+        <th scope="col"><%= sort_link @q, :order_id, model_class.human_attribute_name(:order), default_order: :desc %></th>
+        <th scope="col"><%= sort_link @q, :order_client_name, 'Cliente', default_order: :desc %></th>
+        <th scope="col"><%= sort_link @q, :value, model_class.human_attribute_name(:value), default_order: :desc %></th>
+        <th scope="col"><%= sort_link @q, :payday, model_class.human_attribute_name(:payday), default_order: :desc %></th>
+        <th scope="col"><%= sort_link @q, :status, model_class.human_attribute_name(:status), default_order: :desc %></th>
         <th scope="col"><%= model_class.human_attribute_name(:note) %></th>
         <th scope="col"><%=t '.actions', :default => t("helpers.actions") %></th>
       </tr>
@@ -31,10 +39,11 @@
         <tr>
           <td scope="row"><%= link_to payment.id, payment %></td>
           <td><%= payment.user.name %></td>
-          <td><%= payment.order.try(:id) %></td>
-          <td><%= payment.value %></td>
+          <td><%= link_to_modal "##{payment.order.try(:id)}", payment.order %></td>
+          <td><%= link_to_modal payment.order.client.try(:name), payment.order.client %></td>
+          <td><%= number_to_currency payment.value %></td>
           <td><%= payment.payday %></td>
-          <td><%= payment.status %></td>
+          <td><%= payment.status_i18n %></td>
           <td><%= payment.note %></td>
           <td>
             <%# if can? :update, payment %>

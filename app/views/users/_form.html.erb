@@ -1,0 +1,17 @@
+<%= simple_form_for(@user) do |f| %>
+  <%= f.error_notification %>
+  <div class="row">
+    <div class="col-lg-6">
+      <%= f.input :name %>
+      <%= f.input :username %>
+      <%= f.input :password %>
+      <%= f.input :password_confirmation %>
+    </div>
+    <div class="col-lg-6">
+
+    </div>
+  </div>
+  <hr>
+  <%= f.button :submit, class: 'btn btn-success' %>
+  <%= link_to 'Cancelar', users_path, class: 'btn btn-danger' %>
+<% end %>

@@ -1,0 +1,22 @@
+<%- model_class = Payment -%>
+<%= search_form_for @q, url: payments_path, html: { class: 'form-horizonal d-print-none' } do |f| %>
+  <h3>Busca</h3>
+  <div class="row justify-content-md-center">
+    <div class="col-4">
+      <%= f.input :order_client_name_cont, label: "Nome do #{model_class.human_attribute_name(:client)}", required: false %>
+      <%= f.input :order_id_eq, label: "Nº #{model_class.human_attribute_name(:order)}", input_html: { class: '' }, required: false %>
+    </div>
+    <div class="col-4">
+      <%= f.input :payday_gteq, label: "#{model_class.human_attribute_name(:payday)} inicial", as: :string, placeholder: 'Ex: 10/01/2018', required: false, input_html: { class: 'date calendar', data: { 'start-date': @q.payday_gteq } } %>
+      <%= f.input :payday_lteq, label: "#{model_class.human_attribute_name(:payday)} final", as: :string, placeholder: 'Ex: 10/02/2018', required: false, input_html: { class: 'date calendar', data: { 'start-date': @q.payday_lteq } } %>
+    </div>
+    <div class="col-4">
+      <%= f.input :status_eq, label: model_class.human_attribute_name(:status), as: :select, :collection => Payment.statuses.map {|x| [t("enums.payment.status.#{x[0]}"), x[1]]}.sort_by {|a,b| a }, :include_blank => "Todas", input_html: {class: 'select2'}, required: false %>
+    </div>
+
+    <%= f.button :submit, class: 'btn btn-success' %>
+    <%= link_to 'Limpar', payments_path, class: 'btn btn-info ml-3' %>
+
+  </div>
+  <hr>
+<% end %>

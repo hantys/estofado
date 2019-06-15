@@ -2,8 +2,8 @@ puts "### Cidades e Estados"
 load "db/imports/states_cities.rb"
 
 puts "### Usuario"
-User.create email: 'pedro.fausto@hotmail.com', username: 'pedro', password: '123456'
-User.create email: 'danilo@danilo.com', username: 'danilo', password: '123456'
+User.create name: 'pedro fausto', email: 'pedro.fausto@hotmail.com', username: 'pedro', password: '123456'
+User.create name: 'danilo', email: 'danilo@danilo.com', username: 'danilo', password: '123456'
 
 puts "### Client"
 FactoryBot.create_list :client, 20

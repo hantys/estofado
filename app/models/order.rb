@@ -7,8 +7,10 @@ class Order < ApplicationRecord
   belongs_to :product
 
   has_many :payments
+
   validates_presence_of(:user_id)
   validates_presence_of(:product_id)
   validates_presence_of(:client_id)
   validates_presence_of(:cost)
+  validates :cost, numericality: { greater_than: 0 }
 end

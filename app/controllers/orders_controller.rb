@@ -7,13 +7,20 @@ class OrdersController < ApplicationController
   # GET /orders.json
   def index
     @q = Order.ransack(params[:q])
-
-    @orders = @q.result.order(id: :desc).page params[:page]
+    if params[:debito] == 'true'
+      @orders = @q.result.where(status: 1).order(id: :desc).page params[:page]
+    else
+      @orders = @q.result.order(id: :desc).page params[:page]
+    end
   end
 
   # GET /orders/1
   # GET /orders/1.json
   def show
+    if params[:modal] == 'true'
+      @modal = true
+      render :show, layout: false
+    end
   end
 
   # GET /orders/new

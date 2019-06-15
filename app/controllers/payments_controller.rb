@@ -18,17 +18,22 @@ class PaymentsController < ApplicationController
 
   # GET /payments/new
   def new
+    @order_id = params[:order_id] || nil
     @payment = Payment.new
   end
 
   # GET /payments/1/edit
   def edit
+    @order_id = @payment.order_id
   end
 
   # POST /payments
   # POST /payments.json
   def create
     @payment = Payment.new(payment_params)
+    @payment.user_id = current_user.id
+    @payment.value = convert_money
+    @order_id = @payment.order_id
 
     respond_to do |format|
       if @payment.save
@@ -45,10 +50,12 @@ class PaymentsController < ApplicationController
   # PATCH/PUT /payments/1.json
   def update
     respond_to do |format|
+      payment_params[:value] = convert_money
       if @payment.update(payment_params)
         format.html { redirect_to @payment, notice: 'Payment was successfully updated.' }
         format.json { render :show, status: :ok, location: @payment }
       else
+        @order_id = @payment.order_id
         format.html { render :edit }
         format.json { render json: @payment.errors, status: :unprocessable_entity }
       end
@@ -67,6 +74,13 @@ class PaymentsController < ApplicationController
 
   private
 
+  def convert_money
+    params[:payment][:value]
+      .delete('.')
+      .delete('R$')
+      .tr(',', '.')
+  end
+
   # Use callbacks to share common setup or constraints between actions.
   def set_payment
     @payment = Payment.find(params[:id])
@@ -74,6 +88,6 @@ class PaymentsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def payment_params
-    params.require(:payment).permit(:user_id, :order_id, :value, :payday, :status, :note)
+    params.require(:payment).permit!
   end
 end

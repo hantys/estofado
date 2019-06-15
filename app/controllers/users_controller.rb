@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-
+    
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, success: 'Usuário criado com sucesso.' }
@@ -83,7 +83,7 @@ class UsersController < ApplicationController
     # if current_user.has_role?(:admin)
     #   params.require(:user).permit!
     # else
-    #   params.require(:user).permit(:username, :email, :password, :password_confirmation)
+      params.require(:user).permit!
     # end
   end
 end

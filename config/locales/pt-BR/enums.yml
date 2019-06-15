@@ -1,62 +1,10 @@
 pt-BR:
   enums:
-    roles:
-      admin: Administrador
-      manager: Gerente
-      representative: Representante
     client:
       status:
         active: Com pedido
         finish: Sem pedido
-    stock_final_product:
-      kind:
-        raw_material: Batida
-        product: Produto Final
-    budget:
+    order:
       status:
-        waiting: Aguardando Autorização
-        rejected: Reprovado
-        authorized: Autorizado
-        billed: Faturado
-        delivered: Entregue
-        confirm: Confirmado
-    provider_contract:
-      status:
-        active: Ativo
-        finish: Finalizado
-    bill_payable:
-      status:
-        pending: A Pagar
-        late: Vencido
-        paid: Pago
-    bill_payable_installment:
-      type_payment:
-        billet: Boleto
-        bank: Transferência
-        card: Cartão
-      status:
-        pending: A Pagar
-        late: Vencido
-        paid: Pago
-    bill_receivable:
-      type_receivables:
-        budget: Pedido
-        other: Outro
-      status:
-        pending: A Receber
-        late: Vencido
-        paid: Recebido
-    bill_receivable_installment:
-      status:
-        pending: A Receber
-        late: Vencido
-        paid: Recebido
-    op_transaction:
-      type_action:
-        credit: Crédito
-        debit: Débito
-      action:
-        transfer: Transferência
-        paid: Efetuando Pagamento
-        receive: Recebendo Pagamento
-        operation: Operação
+        active: finalizado
+        finish: devedor

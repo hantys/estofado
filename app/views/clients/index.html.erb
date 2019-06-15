@@ -25,9 +25,9 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col"><%= model_class.human_attribute_name(:image) %></th>
-          <th scope="col"><%= model_class.human_attribute_name(:name) %></th>
+          <th scope="col"><%= sort_link @q, :name, model_class.human_attribute_name(:name), default_order: :desc %></th>
           <th scope="col"><%= model_class.human_attribute_name(:cpf) %></th>
-          <th scope="col"><%= model_class.human_attribute_name(:status) %></th>
+          <th scope="col"><%= sort_link @q, :status, model_class.human_attribute_name(:status), default_order: :desc %></th>
           <th scope="col"><%=t '.actions', :default => t("helpers.actions") %></th>
         </tr>
       </thead>

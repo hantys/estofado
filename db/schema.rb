@@ -60,8 +60,8 @@ ActiveRecord::Schema.define(version: 2019_05_31_034836) do
     t.bigint "user_id"
     t.bigint "client_id"
     t.bigint "product_id"
-    t.float "cost"
-    t.float "paid"
+    t.float "cost", default: 0.0
+    t.float "paid", default: 0.0
     t.date "payday"
     t.integer "status", default: 0
     t.text "note"
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2019_05_31_034836) do
   create_table "payments", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "order_id"
-    t.float "value"
+    t.float "value", default: 0.0
     t.date "payday"
     t.integer "status", default: 0
     t.text "note"
