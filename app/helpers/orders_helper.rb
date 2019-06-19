@@ -15,6 +15,8 @@ module OrdersHelper
     bootstrap_status(status, text)
   end
 
+  private
+
   # rubocop:disable Metrics/CyclomaticComplexity
   def bootstrap_status(status, text)
     case status
