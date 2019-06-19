@@ -7,7 +7,7 @@
       <%= f.input :cost, as: :string, input_html: { class: 'money' } %>
     </div>
     <div class="col-lg-6">
-      <%= f.input :payday, as: :string, input_html: { class: 'date calendar' } %>
+      <%= f.input :payday, as: :string, input_html: { class: 'date calendar', data: { 'start-date': @order.payday } } %>
       <%= f.input :note, input_html: { class: '' } %>
 
     </div>

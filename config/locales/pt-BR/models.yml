@@ -62,6 +62,7 @@ pt-BR:
         order_id: Pedido
         order: Pedido
         value: valor
+        client: Cliente
         payday: Pago Em
         status: Situação
         note: Observação

@@ -21,10 +21,10 @@
       <% @orders.each do |order| %>
         <tr>
           <td scope="row"><%= link_to order.id, order %></td>
-          <td><%= order.user.name %></td>
-          <td><%= order.product.name %></td>
-          <td><%= order.cost %></td>
-          <td><%= order.paid %></td>
+          <td><%= order.user.try(:name) %></td>
+          <td><%= order.product.try(:name) %></td>
+          <td><%= number_to_currency order.cost %></td>
+          <td><%= number_to_currency order.paid %></td>
           <td><%= order.payday %></td>
           <td><%= order.status_i18n %></td>
           <td><%= order.note %></td>

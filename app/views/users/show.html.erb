@@ -1,4 +1,4 @@
-<%- model_class = Payment -%>
+<%- model_class = User -%>
 <div class="card-header card-header-primary d-flex <%= 'justify-content-lg-between' unless @modal %> align-items-center">
   <span></span>
   <h3 class='mb-0 font-weight-bold text-uppercase'>
@@ -9,13 +9,13 @@
       <div class="d-flex flex-row justify-content-start align-items-center">
 
         <%= link_to t('.back', :default => t("helpers.links.back")),
-                      payments_path, :class => 'btn btn-secondary' %>
+                      users_path, :class => 'btn btn-secondary' %>
 
         <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_payment_path(@payment), :class => 'btn btn-primary' %>
-
+                      edit_user_path(@user), :class => 'btn btn-primary' %>
+    
         <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      payment_path(@payment),
+                      user_path(@user),
                       :method => 'delete',
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-danger' %>
@@ -30,15 +30,13 @@
         <div class="row">
           <div class="col-4 mr-3">
             <%= link_to t('.back', :default => t("helpers.links.back")),
-                          payments_path, :class => 'btn btn-secondary mb-2' %>
-
-            <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                        edit_payment_path(@payment), :class => 'btn btn-primary mb-2' %>
+                          users_path, :class => 'btn btn-secondary mb-2' %>
           </div>
           <div class="col-4 ml-3">
-
+            <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                        edit_user_path(@user), :class => 'btn btn-primary mb-2' %>
             <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                          payment_path(@payment),
+                          user_path(@user),
                           :method => 'delete',
                           :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                           :class => 'btn btn-danger mb-2' %>
@@ -50,41 +48,25 @@
   <div class="row mt-4 mb-4">
     <div class="col-sm">
       <strong>
-        <%= model_class.human_attribute_name(:order) %>:
+        <%= model_class.human_attribute_name(:name) %>:
       </strong>
-      <%= link_to_modal "##{@payment.order.try(:id)}", @payment.order %>
-      <hr/>
-
-      <strong>
-        Cliente:
-      </strong>
-      <%= link_to_modal @payment.order.client.try(:name), @payment.order.client %>
-      <hr/>
-
-      <strong>
-        <%= model_class.human_attribute_name(:user_id) %>:
-      </strong>
-      <%= @payment.user.try(:name) %>
+      <%= @user.name %>
       <hr>
+
+      <strong>
+        <%= model_class.human_attribute_name(:username) %>:
+      </strong>
+      <%= @user.username %>
+      <hr>
+
+      <strong>
+        <%= model_class.human_attribute_name(:email) %>:
+      </strong>
+      <%= @user.email %>
+      <hr/>
     </div>
     <div class="col-sm">
-      <strong>
-        <%= model_class.human_attribute_name(:status) %>:
-      </strong>
-      <%= @payment.status_i18n %>
-      <hr/>
-      
-      <strong>
-        <%= model_class.human_attribute_name(:payday) %>:
-      </strong>
-      <%= @payment.payday %>
-      <hr/>
 
-      <strong>
-        <%= model_class.human_attribute_name(:value) %>:
-      </strong>
-      <%= number_to_currency @payment.value %>
-      <hr/>
     </div>
   </div>
 </div>

@@ -9,7 +9,7 @@
       <%= f.input :cpf_cont, label: model_class.human_attribute_name(:cpf), input_html: { class: 'cpf' }, required: false %>
     </div>
     <div class="col-4">
-      <%= f.input :status_eq, label: model_class.human_attribute_name(:status), as: :select, :collection => Client.statuses.map {|x| [t("enums.client.status.#{x[0]}"), x[1]]}.sort_by {|a,b| a }, :include_blank => "Todas", input_html: {class: 'simple-select2'}, required: false %>
+      <%= f.input :status_eq, label: model_class.human_attribute_name(:status), as: :select, :collection => Client.statuses.map {|x| [t("enums.client.status.#{x[0]}"), x[1]]}.sort_by {|a,b| a }, :include_blank => "Todas", input_html: {class: 'select2'}, required: false %>
     </div>
 
     <%= f.button :submit, class: 'btn btn-success' %>

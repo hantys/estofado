@@ -14,7 +14,7 @@
   <div class="ml-auto d-md-none mb-4">
       <%= link_to t('.new', :default => t("helpers.links.new")), new_order_path, class: "btn btn-primary" %>
   </div>
-  <%#= render 'search' %>
+  <%= render 'search' %>
   <%= paginate @orders if @orders.size > 20 %>
   <%= page_entries_info @orders, entry_name: 'item' %>
   <%= paginate @orders %>
@@ -22,14 +22,14 @@
   <table class="table table-bordered table-hover text-center">
     <thead class="thead-light">
       <tr>
-        <th scope="col">#</th>
-        <th scope="col"><%= model_class.human_attribute_name(:user) %></th>
-        <th scope="col"><%= model_class.human_attribute_name(:client) %></th>
-        <th scope="col"><%= model_class.human_attribute_name(:product) %></th>
-        <th scope="col"><%= model_class.human_attribute_name(:cost) %></th>
-        <th scope="col"><%= model_class.human_attribute_name(:paid) %></th>
-        <th scope="col"><%= model_class.human_attribute_name(:payday) %></th>
-        <th scope="col"><%= model_class.human_attribute_name(:status) %></th>
+        <th scope="col"><%= sort_link @q, :id, '#', default_order: :desc %></th>
+        <th scope="col"><%= sort_link @q, :user_name, model_class.human_attribute_name(:user), default_order: :desc %></th>
+        <th scope="col"><%= sort_link @q, :client_name, model_class.human_attribute_name(:client), default_order: :desc %></th>
+        <th scope="col"><%= sort_link @q, :product_name, model_class.human_attribute_name(:product), default_order: :desc %></th>
+        <th scope="col"><%= sort_link @q, :cost, model_class.human_attribute_name(:cost), default_order: :desc %></th>
+        <th scope="col"><%= sort_link @q, :paid, model_class.human_attribute_name(:paid), default_order: :desc %></th>
+        <th scope="col"><%= sort_link @q, :payday, model_class.human_attribute_name(:payday), default_order: :desc %></th>
+        <th scope="col"><%= sort_link @q, :status, model_class.human_attribute_name(:status), default_order: :desc %></th>
         <th scope="col"><%= model_class.human_attribute_name(:note) %></th>
         <th scope="col"><%=t '.actions', :default => t("helpers.actions") %></th>
       </tr>
@@ -40,12 +40,12 @@
         <tr>
           <td scope="row"><%= link_to order.id, order %></td>
           <td><%= order.user.name %></td>
-          <td><%= order.client.name %></td>
+          <td><%= link_to_modal order.client.try(:name), order.client %></td>
           <td><%= order.product.name %></td>
-          <td><%= order.cost %></td>
-          <td><%= order.paid %></td>
+          <td><%= number_to_currency order.cost %></td>
+          <td><%= number_to_currency order.paid %></td>
           <td><%= order.payday %></td>
-          <td><%= order.status %></td>
+          <td><%= order.status_i18n %></td>
           <td><%= order.note %></td>
           <td>
             <%# if can? :update, order %>

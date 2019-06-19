@@ -4,6 +4,6 @@ FactoryBot.define do
   factory :product do
     name { Faker::Commerce.product_name }
     note { 'MyText' }
-    status { 1 }
+    status {  rand(0..1) }
   end
 end

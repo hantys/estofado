@@ -12,11 +12,12 @@
 //
 //= require rails-ujs
 //= require activestorage
+//= require bootstrap/dist/js/bootstrap
 //= require select2/dist/js/select2
 //= require select2/dist/js/i18n/pt-BR
 //= require air-datepicker/dist/js/datepicker.min
 //= require air-datepicker/dist/js/i18n/datepicker.pt-BR
-//= require_tree .
+//= require default
 
 $(document).ready(function(){
   $('.select2').select2({
