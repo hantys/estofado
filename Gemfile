@@ -14,7 +14,7 @@ gem 'webpacker'
 
 gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
-gem 'turbolinks', '~> 5'
+# gem 'turbolinks', '~> 5'
 
 gem 'mini_magick', '~> 4.8'
 
@@ -33,7 +33,11 @@ gem 'font-awesome-sass'
 gem 'bootstrap_form', '>= 4.2.0'
 gem 'simple_form'
 
+#auditorias
+gem 'paper_trail' # https://github.com/paper-trail-gem/paper_trail
 gem 'paper_trail-association_tracking'
+
+gem "correios_api", github: "hantys/correios_api"#, branch: 'update_rails'
 
 gem 'carrierwave'
 
@@ -41,7 +45,7 @@ gem 'paranoia', '~> 2.2'
 
 gem 'kaminari'
 
-gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootsnap', require: false
 
 gem 'factory_bot_rails'
 

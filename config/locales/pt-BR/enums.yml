@@ -2,9 +2,12 @@ pt-BR:
   enums:
     client:
       status:
-        active: Com pedido
-        finish: Sem pedido
+        normal: Normal
+        pending: Com pendência
+        ok: Em dias
     order:
       status:
-        active: finalizado
-        finish: devedor
+        in_production: Em produção
+        delivered: Entregue
+        pending: Com pendência
+        ok: Em dias

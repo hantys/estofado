@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Client < ApplicationRecord
-  enum status: { active: 0, finish: 1 }
+  enum status: { normal: 0, pending: 1, ok: 2 }
   mount_uploader :image, FotoUploader
   has_one :address, as: :addressable, dependent: :destroy
   has_many :phones, as: :phoneable, dependent: :destroy
