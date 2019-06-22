@@ -39,7 +39,7 @@
             <td><%= image_tag client.image_url(:thumb), alt: 'foto do usuario', width: 80, height: 80 %></td>
             <td><%= link_to client.name, client %></td>
             <td><%= client.cpf %></td>
-            <td><%= client.status %></td>
+            <td><%= label_status_client client.status %></td>
             <td>
               <%# if can? :update, client %>
                 <%= link_to edit_client_path(client), class: 'btn btn-primary has-icon' do %>
