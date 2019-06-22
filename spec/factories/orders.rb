@@ -8,7 +8,7 @@ FactoryBot.define do
     cost { 1.5 }
     paid { 1.5 }
     payday { Date.today + (rand(1..6)).day }
-    status { rand(0..1) }
+    status { rand(0..4) }
     note { 'MyText' }
   end
 end

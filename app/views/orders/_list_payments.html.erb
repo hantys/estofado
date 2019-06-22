@@ -1,0 +1,29 @@
+<%- model_class = Payment -%>
+<legend>
+  <%=t '.title', :default => model_class.model_name.human.pluralize.titleize %>:
+</legend>
+<div class="table-responsive">
+  <table class="table table-bordered table-hover text-center">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col"><%= model_class.human_attribute_name(:user) %></th>
+        <th scope="col"><%= model_class.human_attribute_name(:value) %></th>
+        <th scope="col"><%= model_class.human_attribute_name(:payday) %></th>
+        <th scope="col"><%= model_class.human_attribute_name(:note) %></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @payments.each do |payment| %>
+        <tr>
+          <td scope="row"><%= link_to payment.id, payment %></td>
+          <td><%= payment.user.try(:name) %></td>
+          <td><%= number_to_currency payment.value %></td>
+          <td><%= payment.payday %></td>
+          <td><%= payment.note %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

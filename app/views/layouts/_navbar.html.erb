@@ -17,11 +17,11 @@
           Pedidos / Pendências
         </a>
         <div class="dropdown-menu" aria-labelledby="dropdown02">
-          <%= link_to orders_path, class: "dropdown-item #{active_class('', orders_path)}" do %>
-            Todos os Pedidos
-          <% end %>
           <%= link_to new_order_path, class: "dropdown-item #{active_class('', new_order_path)}" do %>
             Novo Pedido
+          <% end %>
+          <%= link_to orders_path, class: "dropdown-item #{active_class('', orders_path)}" do %>
+            Todos os Pedidos
           <% end %>
           <%= link_to orders_path(debito: 'true'), class: "dropdown-item #{active_class('', orders_path(debito: 'true'))}" do %>
             Pedidos com Pendências

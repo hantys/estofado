@@ -45,7 +45,7 @@
           <td><%= number_to_currency order.cost %></td>
           <td><%= number_to_currency order.paid %></td>
           <td><%= order.payday %></td>
-          <td><%= order.status_i18n %></td>
+          <td><%= label_status_order order.status %></td>
           <td><%= order.note %></td>
           <td>
             <%# if can? :update, order %>

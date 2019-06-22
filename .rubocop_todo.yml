@@ -1,18 +1,3 @@
-##################### Style ##################################
-
-Style/FormatStringToken:
-  # Because we parse a lot of source codes from strings. Percent arrays
-  # look like unannotated format string tokens to this cop.
-  Exclude:
-    - spec/**/*
-
-Style/EmptyMethod:
-  Enabled: false
-
-Style/DocumentationMethod:
-  Enabled: false
-  RequireForNonPublicMethods: false
-
 ##################### Metrics ##################################
 
 Metrics/AbcSize:

@@ -27,6 +27,7 @@ class OrdersController < ApplicationController
   def new
     @client_id = params[:client_id] || nil
     @order = Order.new
+    @order.payments.build
   end
 
   # GET /orders/1/edit
@@ -40,7 +41,8 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.user_id = current_user.id
     @client_id = @order.client_id
-    @order.cost = convert_money
+    @order.cost = convert_money(order_params[:cost])
+    @order.payments.last.value = convert_money(order_params[:payments_attributes].values[0][:value])
 
     respond_to do |format|
       if @order.save
@@ -57,7 +59,7 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1.json
   def update
     respond_to do |format|
-      order_params[:cost] = convert_money
+      order_params[:cost] = convert_money(order_params[:cost])
       if @order.update(order_params)
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: @order }
@@ -81,8 +83,8 @@ class OrdersController < ApplicationController
 
   private
 
-  def convert_money
-    params[:order][:cost]
+  def convert_money(money)
+    money
       .delete('.')
       .delete('R$')
       .tr(',', '.')

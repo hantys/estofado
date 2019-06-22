@@ -50,6 +50,12 @@
   <div class="row mt-4 mb-4">
     <div class="col-sm">
       <strong>
+        <%= model_class.human_attribute_name(:id) %>:
+      </strong>
+      #<%= @order.id %>
+      <hr/>
+
+      <strong>
         <%= model_class.human_attribute_name(:client) %>:
       </strong>
       <%= link_to_modal @order.client.try(:name), @order.client %>
@@ -64,7 +70,7 @@
       <strong>
         <%= model_class.human_attribute_name(:status) %>:
       </strong>
-      <%= @order.status_i18n %>
+      <%= label_status_order @order.status %>
       <hr/>
 
       <strong>
@@ -93,4 +99,5 @@
       <hr/>
     </div>
   </div>
+  <%= render 'list_payments', '@payments': @order.payments %>
 </div>

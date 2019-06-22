@@ -4,7 +4,7 @@ FactoryBot.define do
   factory :client do
     name { Faker::Name.name }
     cpf { '3453454554' }
-    status { rand(0..1) }
+    status { rand(0..2) }
     image { 'MyString' }
     after(:create) do |client|
       create(:phone, phoneable: client)

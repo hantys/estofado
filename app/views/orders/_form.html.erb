@@ -4,12 +4,18 @@
     <div class="col-lg-6">
       <%= f.input :client_id, collection: Client.order(:name), prompt: "Escolha um cliente", input_html: { class: 'select2' }, selected: @client_id %>
       <%= f.input :product_id, collection: Product.order(:name), prompt: "Escolha um produto", input_html: { class: 'select2' } %>
-      <%= f.input :cost, as: :string, input_html: { class: 'money' } %>
-    </div>
-    <div class="col-lg-6">
+      <%= f.input :cost, as: :string, input_html: { class: 'money', value: number_to_currency(@order.cost) } %>
       <%= f.input :payday, as: :string, input_html: { class: 'date calendar', data: { 'start-date': @order.payday } } %>
       <%= f.input :note, input_html: { class: '' } %>
-
+    </div>
+    <div class="col-lg-6">
+      <legend>Entrada</legend>
+      <%= f.fields_for :payments do |payment_form| %>
+        <%= payment_form.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
+        <%= payment_form.input :value, label: 'valor', as: :string, input_html: { class: 'money' } %>
+        <%= payment_form.input :payday, label: 'Pago Em', as: :string, input_html: { class: 'date calendar' } %>
+        <%= payment_form.input :note, label: 'Observação' %>
+      <% end %>
     </div>
   </div>
   <hr>

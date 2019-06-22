@@ -22,13 +22,14 @@ pt-BR:
         updated_at: Atualizado em
 
       order:
+        id: Nº
         user_id: Usuário
         user: Usuário
         client_id: Cliente
         client: Cliente
         product_id: Produto
         product: Produto
-        cost: Preço
+        cost: Valor Total
         paid: Débito
         payday: Vencimento
         status: Situação

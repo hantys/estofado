@@ -28,7 +28,6 @@
         <th scope="col"><%= sort_link @q, :order_client_name, 'Cliente', default_order: :desc %></th>
         <th scope="col"><%= sort_link @q, :value, model_class.human_attribute_name(:value), default_order: :desc %></th>
         <th scope="col"><%= sort_link @q, :payday, model_class.human_attribute_name(:payday), default_order: :desc %></th>
-        <th scope="col"><%= sort_link @q, :status, model_class.human_attribute_name(:status), default_order: :desc %></th>
         <th scope="col"><%= model_class.human_attribute_name(:note) %></th>
         <th scope="col"><%=t '.actions', :default => t("helpers.actions") %></th>
       </tr>
@@ -43,7 +42,6 @@
           <td><%= link_to_modal payment.order.client.try(:name), payment.order.client %></td>
           <td><%= number_to_currency payment.value %></td>
           <td><%= payment.payday %></td>
-          <td><%= payment.status_i18n %></td>
           <td><%= payment.note %></td>
           <td>
             <%# if can? :update, payment %>
