@@ -19,6 +19,8 @@
         <th scope="col"><%= model_class.human_attribute_name(:name) %></th>
         <th scope="col"><%= model_class.human_attribute_name(:email) %></th>
         <th scope="col"><%= model_class.human_attribute_name(:username) %></th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Situação</th>
         <th scope="col"><%=t '.actions', :default => t("helpers.actions") %></th>
       </tr>
     </thead>
@@ -28,21 +30,23 @@
         <tr>
           <td scope="row"><%= link_to user.id, user %></td>
           <td><%= link_to user.name, user %></td>
-          <td><%= user.email %></td>
           <td><%= user.username %></td>
+          <td><%= user.email %></td>
+          <td><%= roles_humanize(user.roles) %></td>
+          <td><%= label_status_user user %></td>
           <td>
-            <%# if can? :update, user %>
+            <% if can? :destroy, user %>
+              <%= link_to user, method: :delete, data: { confirm: t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, class: "btn btn-#{user.deleted_at.present? ? 'success' : 'danger'} has-icon" do %>
+                <!-- <i class="material-icons">delete</i> -->
+                <%= user.deleted_at.present? ? 'Habilitar' : 'Desabilitar' %>
+              <% end %>
+            <% end %>
+            <% if can? :update, user %>
               <%= link_to edit_user_path(user), class: 'btn btn-primary has-icon' do %>
                 <!-- <i class="material-icons">edit</i> -->
                 <%= t('.edit', :default => t("helpers.links.edit")) %>
               <% end %>
-            <%# end %>
-            <%# if can? :destroy, user %>
-              <%= link_to user, method: :delete, data: { confirm: t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, class: 'btn btn-danger has-icon' do %>
-                <!-- <i class="material-icons">delete</i> -->
-                <%= t('.destroy', :default => t("helpers.links.destroy")) %>
-              <% end %>
-            <%# end %>
+            <% end %>
           </td>
         </tr>
       <% end %>

@@ -2,7 +2,7 @@ puts "### Cidades e Estados"
 load "db/imports/states_cities.rb"
 
 puts "### Usuario"
-User.create name: 'pedro fausto', email: 'pedro.fausto@hotmail.com', username: 'pedro', password: '123456'
+User.create name: 'pedro fausto', email: 'pedro.fausto@hotmail.com', username: 'pedro', password: '123456', roles_mask: 1
 User.create name: 'danilo', email: 'danilo@danilo.com', username: 'danilo', password: '123456'
 
 puts "### Client"

@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-    
+
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, success: 'Usuário criado com sucesso.' }
@@ -64,7 +64,11 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user.destroy
+    if @user.deleted_at.present?
+      @user.update deleted_at: nil
+    else
+      @user.destroy
+    end
     respond_to do |format|
       format.html { redirect_to users_url, success: 'Usuário apagado com sucesso.' }
       format.json { head :no_content }
@@ -83,7 +87,7 @@ class UsersController < ApplicationController
     # if current_user.has_role?(:admin)
     #   params.require(:user).permit!
     # else
-      params.require(:user).permit!
+    params.require(:user).permit!
     # end
   end
 end

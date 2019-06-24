@@ -4,11 +4,22 @@
     <div class="col-lg-6">
       <%= f.input :name %>
       <%= f.input :username %>
-      <%= f.input :password %>
-      <%= f.input :password_confirmation %>
+      <%= f.input :email %>
+      <% if current_user.role?(:admin) %>
+        <h4 class="mb-3">Permissões</h4>
+        <%= f.input :roles_mask, as: :hidden, required: true %>
+        <% for role in User::ROLES %>
+          <%= check_box_tag "user[roles][#{role}]", role, @user.roles.include?(role), {:name => "user[roles][]"}%>
+          <%= label_tag "user_roles_#{role}", (t :"enums.roles.#{role}") %><br />
+        <% end %>
+        <%= hidden_field_tag "user[roles][]", "" %>
+      <% end %>
     </div>
     <div class="col-lg-6">
-
+      <% if current_user == @user or f.object.new_record? %>
+        <%= f.input :password %>
+        <%= f.input :password_confirmation %>
+      <% end %>
     </div>
   </div>
   <hr>

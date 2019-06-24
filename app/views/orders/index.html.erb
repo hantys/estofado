@@ -43,7 +43,7 @@
           <td><%= link_to_modal order.client.try(:name), order.client %></td>
           <td><%= order.product.name %></td>
           <td><%= number_to_currency order.cost %></td>
-          <td><%= number_to_currency order.paid %></td>
+          <td class='<%= order.paid > 0 ? "text-danger" : "text-success" %>'><%= number_to_currency(order.paid.abs) %></td>
           <td><%= order.payday %></td>
           <td><%= label_status_order order.status %></td>
           <td><%= order.note %></td>

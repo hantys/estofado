@@ -38,11 +38,13 @@
           Historico de Pagamentos
         <% end %>
       </li>
-      <li class="nav-item <%= active_class('users') %>">
-        <%= link_to users_path, class: 'nav-link' do %>
-          Usuários
-        <% end %>
-      </li>
+      <% if current_user.role?(:admin) %>
+        <li class="nav-item <%= active_class('users') %>">
+          <%= link_to users_path, class: 'nav-link' do %>
+            Usuários
+          <% end %>
+        </li>
+      <% end %>
       <li class="nav-item <%= active_class('home') %> dropdown">
         <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Relatórios

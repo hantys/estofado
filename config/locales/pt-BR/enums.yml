@@ -1,5 +1,8 @@
 pt-BR:
   enums:
+    roles:
+      admin: Administrador
+      employee: Funcionário
     client:
       status:
         normal: Normal
