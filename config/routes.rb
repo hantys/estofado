@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :clients
   resources :users
 
+  get '/alterando/status/order/:id/:status', to: 'orders#change_status_order', as: :change_status_order
+
   scope '/busca' do
     get '/endereco/:cep', to: 'home#find_by_address'
     get '/cidades/:id', to: 'home#find_city'

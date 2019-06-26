@@ -116,7 +116,7 @@ task :deploy do
     invoke :'deploy:cleanup'
 
     on :launch do
-      invoke :'puma:restart'
+      invoke :'puma:hard_restart'
       # invoke :'puma:stop'
       # invoke :'puma:start'
       # invoke :'sidekiq:restart'

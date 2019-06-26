@@ -1,17 +1,32 @@
 # frozen_string_literal: true
 
 class OrdersController < ApplicationController
-  before_action :set_order, only: %i[show edit update destroy]
+  before_action :set_order, only: %i[show edit update change_status_order destroy]
 
   # GET /orders
   # GET /orders.json
   def index
     @q = Order.ransack(params[:q])
-    if params[:debito] == 'true'
-      @orders = @q.result.where(status: 1).order(id: :desc).page params[:page]
-    else
-      @orders = @q.result.order(id: :desc).page params[:page]
+    @orders = if params[:debito] == 'true'
+                @q.result.where(status: 1).order(id: :desc).page params[:page]
+              else
+                @q.result.order(id: :desc).page params[:page]
+              end
+  end
+
+  # { in_production: 0, pending: 1, delivered: 2, ok: 3, paid: 4 }
+  def change_status_order
+    case params[:status]
+    when 'entregue'
+      @order.update status: 2, payday: (Date.today + 30.days)
+    when 'finalizar'
+      @order.update status: 4
     end
+    flash[:success] = 'Situação alterada!'
+    redirect_back(fallback_location: root_path)
+  rescue StandardError
+    flash[:error] = 'Algum problema ocorreu, tente novamente!'
+    redirect_back(fallback_location: root_path)
   end
 
   # GET /orders/1
