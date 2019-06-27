@@ -1,0 +1,22 @@
+<%= simple_form_for(@payment, :url => pay_order_create_path, :method => :post, remote: @modal) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+    <%= f.input :order_id, as: :hidden, input_html: { value: @order.id } %>
+    <%= f.input :value, as: :string, input_html: { class: 'money', value: number_to_currency(@payment.value) } %>
+    <script>
+      $('.calendar').datepicker({
+          language: 'pt-BR'
+          // minDate: new Date() // Now can select only dates, which goes after today
+      })
+    </script>
+    <style>
+      .datepicker{z-index:1151 !important;}
+    </style>
+    <%= f.input :payday, as: :string, input_html: { class: 'date calendar', data: { 'start-date': @payment.payday } } %>
+    <%= f.input :note, input_html: { class: '' } %>
+    <%= hidden_field_tag :modal, @modal  %>
+
+  <hr>
+  <%= f.button :submit, class: 'btn btn-success' %>
+<% end %>

@@ -63,9 +63,7 @@
                   Finalizar
                 <% end %>
               <% end %>
-              <%= link_to "", class: 'btn btn-warning has-icon', data: { confirm: t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } do %>
-                Pagar
-              <% end %>
+              <%= link_to_modal_form "Pagar", pay_order_path(order), class: 'btn btn-warning' %>
             <% end %>
           </td>
         </tr>

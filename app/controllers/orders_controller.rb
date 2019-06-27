@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class OrdersController < ApplicationController
-  before_action :set_order, only: %i[show edit update change_status_order destroy]
+  before_action :set_order, only: %i[show edit pay_order update change_status_order destroy]
 
   # GET /orders
   # GET /orders.json
@@ -27,6 +27,23 @@ class OrdersController < ApplicationController
   rescue StandardError
     flash[:error] = 'Algum problema ocorreu, tente novamente!'
     redirect_back(fallback_location: root_path)
+  end
+
+  def pay_order
+    @payment = Payment.new
+    if params[:modal] == 'true'
+      @modal = true
+      render :pay_order, layout: false
+    end
+  end
+
+  def pay_order_create
+    @modal = true
+    @payment = Payment.new(payment_params)
+    @payment.user_id = current_user.id
+    @payment.value = convert_money(payment_params[:value])
+    @order = Order.find @payment.order_id
+    @payment.save
   end
 
   # GET /orders/1
@@ -113,5 +130,10 @@ class OrdersController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def order_params
     params.require(:order).permit!
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def payment_params
+    params.require(:payment).permit!
   end
 end

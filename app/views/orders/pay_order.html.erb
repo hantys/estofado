@@ -1,0 +1,9 @@
+<div class="page-header d-flex justify-content-lg-between align-items-center">
+  <h3>Pagamento do pedido #<%= @order.id %>, cliente: <%= @order.client.name %> </h3>
+</div>
+<legend>Débito: <%= number_to_currency @order.paid %></legend>
+
+
+<span class="new_form_remote">
+  <%= render 'pay_order' %>
+</span>
