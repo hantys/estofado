@@ -21,12 +21,7 @@ class OrdersController < ApplicationController
       @order.update status: 2, payday: (Date.today + 30.days)
     when 'finalizar'
       @order.update status: 4
-    end
-    flash[:success] = 'Situação alterada!'
-    redirect_back(fallback_location: root_path)
-  rescue StandardError
-    flash[:error] = 'Algum problema ocorreu, tente novamente!'
-    redirect_back(fallback_location: root_path)
+    end 
   end
 
   def pay_order

@@ -19,47 +19,49 @@
   <%= page_entries_info @payments, entry_name: 'item' %>
   <%= paginate @payments %>
 
-  <table class="table table-bpaymented table-hover text-center">
-    <thead class="thead-light">
-      <tr>
-        <th scope="col"><%= sort_link @q, :id, '#', default_order: :desc %></th>
-        <th scope="col"><%= sort_link @q, :user_name, model_class.human_attribute_name(:user), default_order: :desc %></th>
-        <th scope="col"><%= sort_link @q, :order_id, model_class.human_attribute_name(:order), default_order: :desc %></th>
-        <th scope="col"><%= sort_link @q, :order_client_name, 'Cliente', default_order: :desc %></th>
-        <th scope="col"><%= sort_link @q, :value, model_class.human_attribute_name(:value), default_order: :desc %></th>
-        <th scope="col"><%= sort_link @q, :payday, model_class.human_attribute_name(:payday), default_order: :desc %></th>
-        <th scope="col"><%= model_class.human_attribute_name(:note) %></th>
-        <th scope="col"><%=t '.actions', :default => t("helpers.actions") %></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @payments.each do |payment| %>
+  <div class="table-responsive">
+    <table class="table table-bpaymented table-hover text-center">
+      <thead class="thead-light">
         <tr>
-          <td scope="row"><%= link_to payment.id, payment %></td>
-          <td><%= payment.user.name %></td>
-          <td><%= link_to_modal "##{payment.order.try(:id)}", payment.order %></td>
-          <td><%= link_to_modal payment.order.client.try(:name), payment.order.client %></td>
-          <td><%= number_to_currency payment.value %></td>
-          <td><%= payment.payday %></td>
-          <td><%= payment.note %></td>
-          <td>
-            <%# if can? :update, payment %>
-              <%= link_to edit_payment_path(payment), class: 'btn btn-primary has-icon' do %>
-                <!-- <i class="material-icons">edit</i> -->
-                <%= t('.edit', :default => t("helpers.links.edit")) %>
-              <% end %>
-            <%# end %>
-            <%# if can? :destroy, payment %>
-              <%= link_to payment, method: :delete, data: { confirm: t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, class: 'btn btn-danger has-icon' do %>
-                <!-- <i class="material-icons">delete</i> -->
-                <%= t('.destroy', :default => t("helpers.links.destroy")) %>
-              <% end %>
-            <%# end %>
-          </td>
+          <th scope="col"><%= sort_link @q, :id, '#', default_order: :desc %></th>
+          <th scope="col"><%= sort_link @q, :user_name, model_class.human_attribute_name(:user), default_order: :desc %></th>
+          <th scope="col"><%= sort_link @q, :order_id, model_class.human_attribute_name(:order), default_order: :desc %></th>
+          <th scope="col"><%= sort_link @q, :order_client_name, 'Cliente', default_order: :desc %></th>
+          <th scope="col"><%= sort_link @q, :value, model_class.human_attribute_name(:value), default_order: :desc %></th>
+          <th scope="col"><%= sort_link @q, :payday, model_class.human_attribute_name(:payday), default_order: :desc %></th>
+          <th scope="col"><%= model_class.human_attribute_name(:note) %></th>
+          <th scope="col"><%=t '.actions', :default => t("helpers.actions") %></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+
+      <tbody>
+        <% @payments.each do |payment| %>
+          <tr>
+            <td scope="row"><%= link_to payment.id, payment %></td>
+            <td><%= payment.user.name %></td>
+            <td><%= link_to_modal "##{payment.order.try(:id)}", payment.order %></td>
+            <td><%= link_to_modal payment.order.client.try(:name), payment.order.client %></td>
+            <td><%= number_to_currency payment.value %></td>
+            <td><%= payment.payday %></td>
+            <td><%= payment.note %></td>
+            <td>
+              <%# if can? :update, payment %>
+                <%= link_to edit_payment_path(payment), class: 'btn btn-primary has-icon' do %>
+                  <!-- <i class="material-icons">edit</i> -->
+                  <%= t('.edit', :default => t("helpers.links.edit")) %>
+                <% end %>
+              <%# end %>
+              <%# if can? :destroy, payment %>
+                <%= link_to payment, method: :delete, data: { confirm: t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, class: 'btn btn-danger has-icon' do %>
+                  <!-- <i class="material-icons">delete</i> -->
+                  <%= t('.destroy', :default => t("helpers.links.destroy")) %>
+                <% end %>
+              <%# end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
   <%= paginate @payments %>
 </div>
