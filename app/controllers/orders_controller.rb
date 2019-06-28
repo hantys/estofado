@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
       @order.update status: 2, payday: (Date.today + 30.days)
     when 'finalizar'
       @order.update status: 4
-    end 
+    end
   end
 
   def pay_order
@@ -37,8 +37,8 @@ class OrdersController < ApplicationController
     @payment = Payment.new(payment_params)
     @payment.user_id = current_user.id
     @payment.value = convert_money(payment_params[:value])
-    @order = Order.find @payment.order_id
     @payment.save
+    @order = Order.find @payment.order_id
   end
 
   # GET /orders/1

@@ -11,14 +11,14 @@
   <% case order.status %>
   <% when "in_production" %>
     <%= link_to change_status_order_path(order.id, 'entregue'),
-        class: 'btn btn-info has-icon', remote: true,
+        class: 'btn btn-info', remote: true,
         data: { confirm: t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } do %>
       Entregue
     <% end %>
   <% when "pending", "delivered", "ok" %>
     <% if order.status == 'ok' %>
       <%= link_to change_status_order_path(order.id, 'finalizar'),
-        class: 'btn btn-success has-icon', remote: true,
+        class: 'btn btn-success', remote: true,
         data: { confirm: t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } do %>
         Finalizar
       <% end %>

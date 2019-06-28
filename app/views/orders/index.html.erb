@@ -38,7 +38,7 @@
 
       <tbody>
         <% @orders.each do |order| %>
-          <tr id="order-item-<% order.id %>">
+          <tr id="order-item-<%= order.id %>">
             <%= render 'order_item', order: order %>
           </tr>
         <% end %>
