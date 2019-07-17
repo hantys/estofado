@@ -17,8 +17,8 @@ class Payment < ApplicationRecord
 
   def update_values_order
     o = Order.find order_id
+    o.paid = (o.cost - o.payments.sum(:value))
     if o.payments.count > 1
-      o.paid = (o.cost - o.payments.sum(:value))
       o.status = if o.paid <= 0
                    4
                  else
